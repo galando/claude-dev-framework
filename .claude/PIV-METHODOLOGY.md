@@ -202,6 +202,373 @@ The Implement phase combines planning AND execution into a unified flow.
 
 ---
 
+## Pragmatic Programmer Integration
+
+The PIV methodology integrates core principles from *The Pragmatic Programmer* into the planning phase to prevent technical debt and ensure long-term maintainability.
+
+### When It Happens
+
+During **Phase 2 (Implement)** → **Step 1: Plan**, after feature requirements are gathered and before codebase analysis begins.
+
+### What It Covers
+
+**Four Core Principles:**
+
+#### 1. DRY (Don't Repeat Yourself)
+
+Every piece of knowledge must have a single, unambiguous, authoritative representation.
+
+**Applied in planning:**
+- Check codebase for similar implementations before creating new code
+- Reuse existing patterns, utilities, and services
+- Extract common logic instead of duplicating
+- Follow established conventions
+
+**Example:**
+```
+Planning a new user profile feature:
+❌ BAD: Create new user validation logic
+✅ GOOD: Reuse existing ValidationService from auth feature
+```
+
+#### 2. Shrapnel (Fix Broken Windows)
+
+Don't leave "broken windows" (bad designs, wrong decisions, or poor code) unrepaired.
+
+**Applied in planning:**
+- Note existing technical debt in affected areas
+- Fix related issues while implementing (if appropriate)
+- Avoid creating new broken windows
+- Leave code better than you found it
+
+**Example:**
+```
+Planning to add new endpoint:
+❌ BAD: Add to messy controller that already needs refactoring
+✅ GOOD: Note refactoring opportunity, include in plan if appropriate
+```
+
+#### 3. Automate, Automate, Automate
+
+If it's not automated, it's part of the problem, not the solution.
+
+**Applied in planning:**
+- Plan tests for all new functionality
+- Create scripts for repeatable processes
+- Use CI/CD for automated validation
+- Avoid manual processes
+
+**Example:**
+```
+Planning database migration:
+❌ BAD: Document manual SQL steps to run
+✅ GOOD: Create Flyway migration script + verify with tests
+```
+
+#### 4. Design for Change
+
+Design your code to be modular and flexible, making future changes easier.
+
+**Applied in planning:**
+- Consider likely future changes
+- Design for flexibility (within reason)
+- Avoid premature optimization (YAGNI)
+- Balance flexibility with simplicity
+
+**Example:**
+```
+Planning payment feature:
+❌ BAD: Hardcode single payment provider
+✅ GOOD: Design payment interface, implement one provider, easy to add more
+```
+
+### How It Works
+
+**During Plan Creation:**
+
+1. **Feature requirements gathered** (Phase 1 of planning)
+2. **Pragmatic Programmer review** (Phase 1.5 of planning)
+   - Answer checklist questions for each principle
+   - Note action items (if any)
+   - Adjust approach based on principles
+3. **Codebase analysis** (Phase 2 of planning)
+   - Apply principles while researching patterns
+   - Identify reusable components (DRY)
+   - Note broken windows to fix (Shrapnel)
+4. **Plan finalized** with principles applied
+
+### Why It Matters
+
+**Prevents Technical Debt:**
+- DRY → Less code duplication, easier maintenance
+- Shrapnel → Better code quality over time
+- Automation → Reliable, repeatable processes
+- Design for Change → Adaptable to future needs
+
+**Reduces Rework:**
+- Catches issues early (during planning, not implementation)
+- Ensures quality is built in, not bolted on
+- Prevents "quick and dirty" solutions that become permanent
+
+**Improves Long-term Success:**
+- Code is easier to maintain
+- Changes are less risky
+- Team can move faster over time
+
+### Success Criteria
+
+- [ ] All four principles reviewed during planning
+- [ ] Action items noted (if any)
+- [ ] Plan adjusted based on principles
+- [ ] Implementation follows principle-informed plan
+
+### Anti-Patterns
+
+### ❌ Skipping the Review
+
+**Problem:** "I don't need to check principles, I know what to do"
+
+**Consequence:** Technical debt accumulates, code quality degrades
+
+**Correct Approach:** Always run the Pragmatic Programmer checklist during planning
+
+### ❌ Treating as Optional
+
+**Problem:** "I'll skip it this time, this feature is simple"
+
+**Consequence:** Even simple features benefit from principle review
+
+**Correct Approach:** The review is fast (5-10 minutes) and prevents expensive rework
+
+### ❌ Ignoring Findings
+
+**Problem:** Review identifies issues, but plan ignores them
+
+**Consequence:** Principles become box-checking exercise with no value
+
+**Correct Approach:** Adjust plan based on principle findings, or document why not
+
+---
+
+## Clarification During Planning
+
+The planning process uses the **AskUserQuestion** tool strategically to prevent ambiguity and ensure requirements are clear before implementation begins.
+
+### When Clarification Happens
+
+**Three Integration Points:**
+
+**1. During Phase 1: Feature Understanding**
+   - After initial feature analysis
+   - Before codebase research begins
+
+**2. During Phase 4: Deep Strategic Thinking**
+   - After architectural analysis
+   - Before plan structure generation
+
+**3. Before Finalizing Plan**
+   - After plan structure is complete
+   - Before presenting plan for approval
+
+### What to Ask About
+
+**At Phase 1 (Feature Understanding):**
+
+✅ **Ask about:**
+- Feature scope and boundaries
+- User preferences (libraries, patterns, approaches)
+- Business value and success criteria
+- Priority of competing requirements
+
+❌ **Don't ask about:**
+- Technical decisions (answerable from codebase)
+- Implementation details (figure out during planning)
+- Obvious requirements (should be clear from request)
+
+**Examples:**
+
+```
+✅ GOOD: "Should this feature use existing AuthenticationService or create a new one?"
+✅ GOOD: "Is performance more important than code simplicity for this feature?"
+✅ GOOD: "Should we support edge case X now or defer to future iteration?"
+
+❌ BAD: "What programming language should I use?" (obvious from codebase)
+❌ BAD: "How do I create a REST endpoint?" (figure out from codebase patterns)
+```
+
+**At Phase 4 (Strategic Thinking):**
+
+✅ **Ask about:**
+- Architectural decisions (multiple valid approaches)
+- Trade-offs between quality attributes
+- Implementation approach when alternatives exist
+- Future extensibility vs. current simplicity
+
+❌ **Don't ask about:**
+- Technical trivia (answerable from docs)
+- How to implement (you're the planner)
+- Questions with obvious best practice answers
+
+**Examples:**
+
+```
+✅ GOOD: "Should we use Approach A (simpler, less flexible) or Approach B (more complex, more extensible)?"
+✅ GOOD: "Is it acceptable to introduce dependency X for this feature, or should we find alternative?"
+✅ GOOD: "Should we optimize for read performance or write performance?"
+
+❌ BAD: "Should I follow SOLID principles?" (obviously yes)
+❌ BAD: "What's the best way to structure Java code?" (check codebase conventions)
+```
+
+**Before Finalizing:**
+
+✅ **Ask about:**
+- Remaining ambiguities in plan
+- Confirmation of approach
+- Risks user is willing to accept
+- Assumptions that need verification
+
+❌ **Don't ask about:**
+- Plan approval (use ExitPlanMode for this)
+- "Is my plan ready?" (use ExitPlanMode)
+- Questions you can answer yourself
+
+**Examples:**
+
+```
+✅ GOOD: "I identified two potential issues: X and Y. How should we handle them?"
+✅ GOOD: "The plan assumes Z is acceptable. Is this correct?"
+✅ GOOD: "Should we defer edge case handling to future iteration?"
+
+❌ BAD: "Is my plan ready to execute?" (use ExitPlanMode)
+❌ BAD: "Should I proceed with implementation?" (use ExitPlanMode)
+```
+
+### How It Works
+
+**Planning Flow with Clarification:**
+
+```
+1. Analyze feature requirements
+   │
+2. Ask: "Are requirements clear?"
+   │
+   ├─ NO → Use AskUserQuestion to clarify
+   │       Get answers
+   │       Update understanding
+   │       Loop back to step 2
+   │
+   └─ YES → Proceed to codebase analysis
+          │
+3. Analyze codebase patterns
+   │
+4. Strategic thinking
+   │
+5. Ask: "Are architectural decisions clear?"
+   │
+   ├─ NO → Use AskUserQuestion to clarify
+   │       Get answers
+   │       Update approach
+   │       Loop back to step 5
+   │
+   └─ YES → Generate plan structure
+          │
+6. Ask: "Is plan complete and clear?"
+    │
+    ├─ NO → Use AskUserQuestion to clarify
+    │       Get answers
+    │       Finalize plan
+    │       Loop back to step 6
+    │
+    └─ YES → Use ExitPlanMode to present plan
+```
+
+### Why It Matters
+
+**Prevents Rework:**
+- Clarifying upfront prevents implementing wrong thing
+- Reduces "I thought you meant X" situations
+- Ensures alignment on approach
+
+**Improves Plan Quality:**
+- Uncovers assumptions that might be wrong
+- Identifies risks user should know about
+- Validates trade-offs against user priorities
+
+**Speeds Up Implementation:**
+- Clear requirements = faster implementation
+- No mid-implementation clarifications needed
+- Fewer "wait, I need to ask" moments
+
+### AskUserQuestion vs. ExitPlanMode
+
+**Important Distinction:**
+
+| Tool | Purpose | When to Use | What It Does |
+|------|---------|-------------|--------------|
+| **AskUserQuestion** | Clarify requirements/approaches | When planning, ambiguities exist | Asks user questions, gets answers, continues planning |
+| **ExitPlanMode** | Get plan approval | When plan is complete | Presents plan, asks for approval, stops planning |
+
+**Workflow:**
+```
+Planning Phase
+  │
+  ├─ Use AskUserQuestion (as needed for clarification)
+  │   → Get answers
+  │   → Continue planning
+  │
+  └─ Plan complete
+      │
+      └─ Use ExitPlanMode
+          → Present plan
+          → Request approval
+          → Stop planning
+```
+
+**Don't Mix Them Up:**
+
+❌ **WRONG:** Use AskUserQuestion to ask "Is my plan ready?"
+✅ **RIGHT:** Use ExitPlanMode to present completed plan
+
+❌ **WRONG:** Use ExitPlanMode to clarify requirements
+✅ **RIGHT:** Use AskUserQuestion to clarify during planning
+
+### Success Criteria
+
+- [ ] Requirements clear before codebase analysis
+- [ ] Architectural decisions clear before plan generation
+- [ ] Plan complete and clear before presenting for approval
+- [ ] No ambiguities remain when plan is presented
+- [ ] User has provided input on all key decisions
+
+### Anti-Patterns
+
+### ❌ Skipping Clarification
+
+**Problem:** "I can figure this out myself"
+
+**Consequence:** Implement wrong thing, waste time reworking
+
+**Correct Approach:** When in doubt, ask. Better to ask now than implement wrong.
+
+### ❌ Asking Too Many Questions
+
+**Problem:** AskUserQuestion for everything
+
+**Consequence:** User fatigue, planning takes too long
+
+**Correct Approach:** Only ask when genuinely unclear. Research first, ask second.
+
+### ❌ Using ExitPlanMode for Clarification
+
+**Problem:** Use ExitPlanMode before plan is complete
+
+**Consequence:** Plan not ready, user can't approve
+
+**Correct Approach:** AskUserQuestion during planning, ExitPlanMode when complete
+
+---
+
 ## Phase 4: Simplify (Optional)
 
 **Goal: Improve code clarity and maintainability**
@@ -369,6 +736,127 @@ Includes:
 
 #### Code Review Report
 `.claude/agents/reviews/code-review-{timestamp}.md`
+
+### Test Passage Policy
+
+**🚨 MANDATORY: All tests MUST pass for validation to succeed**
+
+Validation enforces a strict test passage policy. This is non-negotiable.
+
+**Policy:**
+
+**Unit Tests:**
+- ✅ ALL unit tests MUST pass (Failures: 0, Errors: 0)
+- ❌ ANY unit test failure → Validation FAILS
+- ❌ NO exceptions for "just warnings" or "flaky tests"
+
+**Integration Tests:**
+- ✅ ALL integration tests MUST pass (Failures: 0, Errors: 0)
+- ❌ ANY integration test failure → Validation FAILS
+- ❌ NO exceptions for "unrelated failures" or "known issues"
+
+**Test Coverage:**
+- ✅ Coverage MUST be ≥ 80% for new code
+- ❌ Coverage < 80% → Validation FAILS
+- ❌ NO exceptions for "simple code" or "obvious logic"
+
+**What This Means in Practice:**
+
+**Scenario 1: New Feature with Tests**
+```
+Developer: "I added feature X and tests for it"
+Validation: Runs tests
+Result: Tests pass, coverage 85%
+Status: ✅ VALIDATION PASSES
+```
+
+**Scenario 2: New Feature but Tests Fail**
+```
+Developer: "I added feature X and tests for it"
+Validation: Runs tests
+Result: 2 tests fail
+Status: ❌ VALIDATION FAILS
+Action: Fix failing tests, re-run validation
+Do NOT proceed until tests pass
+```
+
+**Scenario 3: Existing Tests Break**
+```
+Developer: "I added feature X"
+Validation: Runs tests
+Result: 3 existing tests fail (regression)
+Status: ❌ VALIDATION FAILS
+Action: Fix regressions, re-run validation
+Do NOT proceed until all tests pass
+```
+
+**Scenario 4: Low Coverage**
+```
+Developer: "I added feature X and a few tests"
+Validation: Runs tests
+Result: Tests pass, coverage 65%
+Status: ❌ VALIDATION FAILS
+Action: Add more tests to reach ≥80%, re-run validation
+Do NOT proceed until coverage adequate
+```
+
+**No Valid Exceptions:**
+
+There are NO acceptable reasons for test failures:
+
+❌ **"That test is flaky"** → Fix the test (make it reliable)
+❌ **"It's not related to my changes"** → Fix it anyway (you broke it)
+❌ **"I'll fix it later"** → Fix it now (later never comes)
+❌ **"It's just a warning"** → No such thing (failures are failures)
+❌ **"The test is wrong"** → Fix the test or fix the code
+
+**Rationale:**
+
+Tests are our safety net. Allowing test failures undermines:
+- **Code quality:** Broken tests mean broken code
+- **Confidence:** Can't trust changes if tests fail
+- **Regressions:** Broken tests miss real bugs
+- **Team productivity:** Debugging accumulated failures is expensive
+
+**This policy is non-negotiable.**
+
+**Test Passage is a Gate:**
+
+```
+┌─────────────┐
+│  Implement  │
+│  feature    │
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│   Run       │
+│   tests     │
+└──────┬──────┘
+       │
+       ├─▶ Tests pass? ──NO──▶ ❌ VALIDATION FAILS
+       │                           │
+       │                           └─▶ Fix failures
+       │                                   │
+       └─▶ YES ────────────────────────────┘
+               │
+               ▼
+       ┌─────────────┐
+       │ Coverage    │
+       │ ≥ 80%?      │
+       └──────┬──────┘
+              │
+              ├─▶ NO ──▶ ❌ VALIDATION FAILS
+              │             └─▶ Add more tests
+              │
+              └─▶ YES ──▶ ✅ VALIDATION PASSES
+```
+
+**Bottom Line:**
+
+**If tests don't pass, validation doesn't pass. Period.**
+
+**Fix the tests. Then re-run validation. Only proceed when all tests pass.**
 
 ### Automatic Flow
 
@@ -777,13 +1265,17 @@ PIV is a comprehensive methodology for AI-assisted development:
 
 1. **Prime** - Understand the codebase before making changes
 2. **Implement** - Plan and execute features systematically
+   - **NEW:** Apply Pragmatic Programmer principles during planning
+   - **NEW:** Clarify ambiguities using AskUserQuestion before implementing
 3. **Simplify** - Optional cleanup to maintain code quality
 4. **Validate** - Automatic verification of quality
+   - **NEW:** All tests MUST pass (non-negotiable hard requirement)
+   - **NEW:** Test coverage ≥ 80% enforced
 
-The methodology is lightweight enough for quick fixes but structured enough for complex features. The optional Simplify phase helps maintain code quality, while the automatic validation ensures quality without manual intervention.
+The methodology is lightweight enough for quick fixes but structured enough for complex features. The Pragmatic Programmer principles prevent technical debt, strategic clarification prevents rework, and the strict test passage ensures quality.
 
-**Key Differentiator**: Validation happens **automatically** as part of the execution flow, not as a separate manual step. This ensures every implementation gets thoroughly validated without requiring developer intervention.
+**Key Differentiator**: Validation happens **automatically** as part of the execution flow, test passage is **mandatory**, and planning includes **quality principles** and **user clarification** to prevent issues before implementation begins.
 
 **Remember**: The goal is not to follow the process rigidly, but to use it to produce better code more efficiently. Let the methodology serve you, not the other way around.
 
-**When in doubt**: Prime → Plan → Execute → Validate. Simplification is optional and should be used based on code complexity and your judgment.
+**When in doubt**: Prime → Plan (with PP review + clarification) → Execute → Validate (tests MUST pass). Simplification is optional and should be used based on code complexity and your judgment.

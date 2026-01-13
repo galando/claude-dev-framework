@@ -59,6 +59,190 @@ I want to verify if data exists on External APIs
 So that I don't get false "exclusive" alerts for properties that actually exist
 ```
 
+### Phase 1.5: Pragmatic Programmer Principles Review
+
+**IMPORTANT:** Before proceeding to codebase analysis, review your feature against proven software engineering principles from *The Pragmatic Programmer*.
+
+**Why this matters:** These principles prevent technical debt, reduce rework, and ensure long-term maintainability.
+
+**Checklist:**
+
+#### ✅ DRY (Don't Repeat Yourself)
+
+**From:** The Pragmatic Programmer, Chapter 2
+
+**Principle:** Every piece of knowledge must have a single, unambiguous, authoritative representation within a system.
+
+**Ask yourself:**
+- Am I duplicating existing logic?
+- Can I reuse an existing utility/helper/service?
+- Is there already a pattern for this in the codebase?
+- Should I extract something reusable before adding new code?
+
+**Before proceeding:**
+- [ ] Checked codebase for similar implementations
+- [ ] Identified reusable patterns to follow
+- [ ] Noted where to extract common logic (if any)
+
+#### ✅ Shrapnel (Fix Broken Windows)
+
+**From:** The Pragmatic Programmer, Chapter 3
+
+**Principle:** Don't leave "broken windows" (bad designs, wrong decisions, or poor code) unrepaired. Fix them now, not later.
+
+**Ask yourself:**
+- Does this feature expose existing technical debt?
+- Am I about to create more technical debt?
+- Should I fix related issues while I'm here?
+- Are there TODOs or FIXMEs in the affected code?
+
+**Before proceeding:**
+- [ ] Noted any broken windows discovered
+- [ ] Added fixing them to plan (if appropriate)
+- [ ] Avoided creating new broken windows
+
+#### ✅ Automate, Automate, Automate
+
+**From:** The Pragmatic Programmer, Chapter 5
+
+**Principle:** If it's not automated, it's part of the problem, not the solution.
+
+**Ask yourself:**
+- Can this be automated instead of manual?
+- Are there scripts/tests that can verify this?
+- How can I make this repeatable and reliable?
+- What would prevent this from being automated?
+
+**Before proceeding:**
+- [ ] Identified what can be automated
+- [ ] Planned automation (tests, scripts, CI/CD)
+- [ ] Avoided manual processes where possible
+
+#### ✅ Design for Change
+
+**From:** The Pragmatic Programmer, Chapter 6
+
+**Principle:** Design your code to be modular and flexible, making future changes easier.
+
+**Ask yourself:**
+- What will likely change in the future?
+- Is this design flexible for those changes?
+- Am I coupling things that shouldn't be coupled?
+- Can I make this more modular without over-engineering?
+
+**Before proceeding:**
+- [ ] Considered likely future changes
+- [ ] Designed for flexibility (within reason)
+- [ ] Avoided premature optimization
+- [ ] Balanced flexibility with simplicity (YAGNI)
+
+**Principle Review Complete:**
+
+- [ ] All four principles reviewed
+- [ ] Action items noted in plan (if any)
+- [ ] Ready to proceed to Phase 2
+
+**If any principle reveals major issues:**
+- Consider asking user for clarification (see AskUserQuestion section below)
+- Document the issue in the plan
+- Adjust approach before proceeding
+
+### Clarify Ambiguities Using AskUserQuestion
+
+**IMPORTANT:** Use the AskUserQuestion tool to clarify requirements BEFORE proceeding with planning.
+
+**When to use AskUserQuestion:**
+
+✅ **Use at Phase 1 (Feature Understanding):**
+- Requirements are vague or ambiguous
+- Multiple valid approaches exist
+- User preferences needed (libraries, patterns)
+- Business value is unclear
+
+❌ **Don't use for:**
+- Asking "Is my plan ready?" (use ExitPlanMode for approval)
+- Asking "Should I proceed?" (use ExitPlanMode for approval)
+- Technical decisions you can make yourself
+- Questions answered by reading codebase
+
+**AskUserQuestion Integration Points:**
+
+**Point 1: After Phase 1 (Feature Understanding)**
+
+Ask about:
+- Feature scope and boundaries
+- User preferences (if multiple valid approaches)
+- Business value and success criteria
+- Priority of requirements
+
+**Example questions:**
+```
+"Should this feature integrate with existing service X or create a new service?"
+"Is performance more important than code simplicity for this feature?"
+"Should we support edge case Y now or defer to future iteration?"
+```
+
+**Point 2: At Phase 4 (Deep Strategic Thinking)**
+
+Ask about:
+- Architectural decisions (multiple valid approaches)
+- Trade-offs between quality attributes
+- Implementation approach when alternatives exist
+- Future extensibility vs. current simplicity
+
+**Example questions:**
+```
+"Should we use Approach A (simpler, less flexible) or Approach B (more complex, more extensible)?"
+"Is it acceptable to introduce dependency X for this feature, or should we find alternative?"
+"Should we optimize for read performance or write performance?"
+```
+
+**Point 3: Before Finalizing Plan (After Phase 5)**
+
+Ask about:
+- Any remaining ambiguities
+- Confirmation of approach
+- Approval to proceed (if needed)
+
+**Example questions:**
+```
+"I identified two potential issues with the current plan: X and Y. How should we handle them?"
+"The plan assumes Z is acceptable. Is this correct?"
+"Ready to proceed with implementation based on this plan?"
+```
+
+**Remember:** Use AskUserQuestion to clarify REQUIREMENTS and APPROACHES, not for plan approval. Use ExitPlanMode when the plan is complete and ready for user approval.
+
+**Clarification Check (Phase 1 → Phase 2 Gateway):**
+
+Before proceeding to Phase 2, ask yourself:
+
+1. **Are requirements clear?**
+   - Do I understand exactly what to build?
+   - Do I know the success criteria?
+
+2. **Are there ambiguities?**
+   - Multiple valid approaches?
+   - User preferences needed?
+   - Architectural decisions unclear?
+
+3. **Is the problem well-defined?**
+   - Can I explain what we're solving?
+   - Do I know why this matters?
+
+**If YES to all:** Proceed to Phase 2 (Codebase Intelligence Gathering)
+
+**If NO to any:** Use AskUserQuestion tool to clarify:
+
+```
+AskUserQuestion with questions about:
+- Feature scope/boundaries (if unclear)
+- Implementation preferences (if multiple options)
+- Trade-offs and priorities (if not obvious)
+```
+
+**Only proceed to Phase 2 when requirements are clear.**
+
 ### Phase 2: Codebase Intelligence Gathering
 
 **IMPORTANT: Start by reading the prime context:**
@@ -312,6 +496,36 @@ Use specialized subagents when beneficial:
 - **Consider scalability implications:**
   - Will this scale?
   - Are there any bottlenecks?
+
+**Architectural Decision Check (Phase 4 → Phase 5 Gateway):**
+
+Before proceeding to Phase 5, ask yourself:
+
+1. **Are architectural decisions clear?**
+   - Do I know which approach to take?
+   - Have I justified the choice?
+
+2. **Are there multiple valid options?**
+   - Could different approaches work?
+   - Are there significant trade-offs?
+
+3. **Do I need user input on trade-offs?**
+   - Performance vs. simplicity?
+   - Flexibility vs. development time?
+   - New dependency vs. existing solution?
+
+**If YES (decisions clear, one best approach):** Proceed to Phase 5 (Plan Structure Generation)
+
+**If NO (multiple valid approaches, trade-offs unclear):** Use AskUserQuestion tool:
+
+```
+AskUserQuestion with questions about:
+- Architectural approach (if multiple options)
+- Trade-off preferences (if not obvious)
+- Dependency acceptance (if new libraries proposed)
+```
+
+**Only proceed to Phase 5 when architectural approach is clear.**
 
 ### Phase 5: Plan Structure Generation
 
@@ -816,6 +1030,40 @@ docker exec -it <postgres-container> psql -U example -d example -c "SELECT * FRO
 - **Known limitations:** What this doesn't do
 - **Extension points:** How to extend in future
 ```
+
+**Final Plan Review (Before Output):**
+
+Before generating the plan file, ask yourself:
+
+1. **Are all requirements addressed?**
+   - Does the plan solve the stated problem?
+   - Are all user needs met?
+
+2. **Are there any remaining ambiguities?**
+   - Unclear dependencies?
+   - Missing implementation details?
+   - Open questions about approach?
+
+3. **Are there potential issues the user should know about?**
+   - Identified risks or concerns?
+   - Technical debt to address?
+   - Assumptions that might be wrong?
+
+**If plan is complete and clear:** Proceed to generate plan file
+
+**If there are remaining questions or issues:** Use AskUserQuestion tool:
+
+```
+AskUserQuestion with questions about:
+- Remaining ambiguities
+- Risk acceptance
+- Assumption verification
+- Issue handling approach
+```
+
+**Then:** Use ExitPlanMode to present plan for user approval.
+
+**Remember:** AskUserQuestion is for CLARIFICATION. ExitPlanMode is for APPROVAL.
 
 ## Output Format
 
