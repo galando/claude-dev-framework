@@ -9,6 +9,94 @@ description: Run comprehensive validation of the Example project in LOCAL DEV MO
 - **NEVER** validate against **PRODUCTION CLOUD** database
 - Production mode is ONLY for deployed releases, NEVER for development/testing
 
+## Test Passage Requirement
+
+**🚨 CRITICAL: ALL TESTS MUST PASS - NO EXCEPTIONS**
+
+**Validation Policy:**
+- ✅ **ALL** unit tests MUST pass (zero failures allowed)
+- ✅ **ALL** integration tests MUST pass (zero failures allowed)
+- ✅ **NEW** tests for new code MUST pass
+- ✅ **EXISTING** tests MUST NOT break (regressions not allowed)
+
+**Hard Stops:**
+- ❌ If ANY unit test fails → **VALIDATION FAILS** → Fix tests before proceeding
+- ❌ If ANY integration test fails → **VALIDATION FAILS** → Fix tests before proceeding
+- ❌ If test coverage < 80% → **VALIDATION FAILS** → Add tests before proceeding
+
+**What This Means:**
+
+**Level 2 (Unit Tests):**
+```
+cd backend && mvn test
+```
+
+**Expected Output:**
+```
+Tests run: XXX, Failures: 0, Errors: 0, Skipped: 0
+```
+
+**If Failures > 0:**
+```
+❌ VALIDATION FAILED
+
+Unit tests are failing:
+- Fix failing tests
+- Ensure all tests pass
+- Re-run: mvn test
+- Do NOT proceed until all tests pass
+```
+
+**Level 3 (Integration Tests):**
+```
+cd backend && mvn verify -DskipUnitTests=true
+```
+
+**Expected Output:**
+```
+Tests run: XXX, Failures: 0, Errors: 0, Skipped: 0
+```
+
+**If Failures > 0:**
+```
+❌ VALIDATION FAILED
+
+Integration tests are failing:
+- Fix failing integration tests
+- Ensure all tests pass
+- Re-run: mvn verify -DskipUnitTests=true
+- Do NOT proceed until all tests pass
+```
+
+**No Exceptions:**
+
+There are NO valid exceptions to this rule:
+
+❌ **NOT allowed:** "It's just a warning"
+❌ **NOT allowed:** "That test is flaky"
+❌ **NOT allowed:** "I'll fix it later"
+❌ **NOT allowed:** "It's not related to my changes"
+
+**If a test is wrong:**
+1. Fix the test (if test is buggy)
+2. Fix the code (if test reveals real bug)
+3. Re-run validation
+4. Only proceed when ALL tests pass
+
+**Rationale:**
+
+Tests are our safety net. Allowing test failures undermines:
+- Code quality
+- Confidence in changes
+- Ability to detect regressions
+- Team productivity (debugging failures later)
+
+**This policy is non-negotiable.**
+
+---
+
+**Summary:** Test passage is a hard requirement. Validation does not proceed until ALL tests pass.
+
 ## Environment Modes
 
 ### Mode 1: Local Development (Docker) ✅ **USE THIS FOR VALIDATION**
@@ -113,6 +201,34 @@ cd backend && mvn test
 Tests run: XXX, Failures: 0, Errors: 0, Skipped: 0
 ```
 
+**🚨 ON FAILURE (HARD STOP):**
+
+If tests fail, validation STOPS immediately:
+
+```
+❌ UNIT TEST VALIDATION FAILED
+
+Failure Details:
+[Output from mvn test showing failures]
+
+REQUIRED ACTION:
+1. Analyze test failures
+2. Fix the code or fix the test (whichever is wrong)
+3. Re-run: cd backend && mvn test
+4. Only proceed when ALL tests pass (Failures: 0, Errors: 0)
+
+Validation is BLOCKED until unit tests pass.
+Do NOT proceed to integration tests until unit tests pass.
+```
+
+**No Exceptions:**
+- Don't skip failing tests
+- Don't disable tests
+- Don't proceed with failures
+- Don't say "I'll fix it later"
+
+**Fix the failure NOW.**
+
 ### 4. Backend Integration Tests (LOCAL DEV MODE)
 
 ```bash
@@ -131,6 +247,41 @@ cd backend && mvn verify -DskipUnitTests=true
 - Does NOT touch CloudProvider production data
 
 **Note:** Requires local Docker PostgreSQL to be running (`./start-local.sh`).
+
+**🚨 ON FAILURE (HARD STOP):**
+
+If tests fail, validation STOPS immediately:
+
+```
+❌ INTEGRATION TEST VALIDATION FAILED
+
+Failure Details:
+[Output from mvn verify showing failures]
+
+REQUIRED ACTION:
+1. Analyze integration test failures
+2. Fix the code or fix the test (whichever is wrong)
+3. Verify LOCAL database is running: ./start-local.sh
+4. Re-run: cd backend && mvn verify -DskipUnitTests=true
+5. Only proceed when ALL tests pass (Failures: 0, Errors: 0)
+
+Validation is BLOCKED until integration tests pass.
+Do NOT proceed to further validation until integration tests pass.
+```
+
+**⚠️ SAFETY CHECK:**
+Before re-running, confirm:
+- [ ] Using backend/.env.local (NOT backend/.env)
+- [ ] Database URL points to localhost/127.0.0.1
+- [ ] LOCAL Docker PostgreSQL is running
+
+**No Exceptions:**
+- Don't skip failing integration tests
+- Don't disable integration tests
+- Don't proceed with failures
+- Don't say "I'll fix it later"
+
+**Fix the failure NOW.**
 
 ### 5. Test Coverage
 
@@ -276,11 +427,18 @@ After all validations complete, provide a summary report with:
 
 **Status:** ✅ PASS / ❌ FAIL
 
+**TEST PASSAGE REQUIREMENT:**
+- ✅ Unit tests: ALL PASS (Failures: 0, Errors: 0)
+- ✅ Integration tests: ALL PASS (Failures: 0, Errors: 0)
+- ❌ If ANY test fails: VALIDATION FAILS (hard stop)
+
 **Pass Rate:** X/11 validations passing
 
 **Total Time:** X minutes
 
 **Environment:** ✅ LOCAL DEV MODE (SAFE)
+
+**NOTE:** Test passage is MANDATORY. Even if 10/11 validations pass, if tests fail, overall status is ❌ FAIL.
 
 ### Issues Found
 
