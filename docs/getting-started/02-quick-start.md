@@ -113,6 +113,39 @@ Implement this change: Add a timestamp field to the User entity
 
 ---
 
+### Phase 4: Learn (Optional - Continuous Improvement) 🆕
+
+**What happens**:
+- After code review, **adaptive-learning skill** suggests capturing learnings
+- Run learning analysis to extract insights from code reviews
+- Identify recurring patterns and improvement opportunities
+- Generate suggestions to enhance rules, validation, and skills
+- Track learning effectiveness over time
+
+**Ask Claude Code**:
+```
+Run /validation:learn to analyze code reviews and extract insights
+```
+
+**What it does**:
+- Parses all code review artifacts
+- Identifies recurring issues across multiple reviews
+- Extracts good patterns for reinforcement
+- Generates improvement suggestions
+- Updates learning metrics dashboard
+
+**Time**: ~30 seconds
+
+**Why it matters**:
+- ✅ Framework gets smarter with every feature
+- ✅ Recurring issues are systematically prevented
+- ✅ Rules and skills continuously improve
+- ✅ Technical debt prevented before it accumulates
+
+**See [Adaptive Learning System](#adaptive-learning-system) below for details.**
+
+---
+
 ## Typical Workflow
 
 ### New Feature (Complex)
@@ -176,6 +209,8 @@ Fix the bug in UserService where null pointer occurs
 | `/validation:validate` | Run validation | Manual validation (optional) |
 | `/validation:code-review` | Code review | Detailed technical review |
 | `/validation:execution-report` | View report | See what was executed |
+| `/validation:learn` | **Extract learnings** | **After code reviews 🆕** |
+| `/validation:learning-status` | **View learning metrics** | **Check progress 🆕** |
 
 ### Utility Commands
 
@@ -298,6 +333,148 @@ Fix the bug where user email validation doesn't reject invalid domains
 1. Review plan before execution
 2. Start with git stash, review diff after execute
 3. Revert if needed: `git checkout .`
+
+---
+
+## Adaptive Learning System 🆕
+
+### Overview
+
+**The framework gets smarter with every feature you build!**
+
+The adaptive learning system is an **optional but recommended** feature that analyzes your code reviews to identify recurring patterns, extract best practices, and systematically improve the framework over time.
+
+### How It Works
+
+**The Learning Loop:**
+
+```
+Feature Implementation
+        ↓
+Code Review (automatic)
+        ↓
+Adaptive-Learning Suggests:
+"Run /validation:learn?"
+        ↓
+Learning Analysis:
+- Parse reviews
+- Identify patterns
+- Extract insights
+        ↓
+Improvement Suggestions:
+- Flag recurring issues
+- Propose rule updates
+- Track metrics
+        ↓
+Framework Gets Smarter! 🧠
+```
+
+### Quick Start with Learning
+
+**1. After your first code review, you'll see:**
+```
+✅ Code review complete.
+
+Capture learnings? Run /validation:learn
+```
+
+**2. Extract insights:**
+```bash
+/validation:learn
+```
+
+**3. Check your learning status:**
+```bash
+/validation:learning-status
+```
+
+**4. If recurring issues found, generate improvements:**
+```bash
+/validation:suggest-improvement rule "Add input validation pattern"
+```
+
+### When to Use Learning
+
+| Scenario | Action |
+|----------|--------|
+| After code review | `/validation:learn` (suggested automatically) |
+| Before new feature | `/validation:learning-status` (check known issues) |
+| Recurring issue found | `/validation:suggest-improvement` (create fix) |
+| Periodically | `/validation:learn --last=5` (analyze trends) |
+
+### Benefits
+
+**For Your Project:**
+- ✅ **Prevents Recurring Issues** - Learn from mistakes
+- ✅ **Continuous Improvement** - Framework evolves with your codebase
+- ✅ **Best Practices Capture** - Good patterns are reinforced automatically
+- ✅ **Technical Debt Prevention** - Address issues systematically
+
+**Example: Preventing N+1 Query Problem**
+
+```bash
+# Feature 1: Code review finds N+1 query issue
+/validation:code-review
+
+# Learning captures it
+/validation:learn
+# Output: "N+1 query found in UserService"
+
+# Feature 2: Same issue found again
+# Learning flags as recurring
+
+# Feature 3: Generate improvement
+/validation:suggest-improvement rule "Add N+1 query detection"
+
+# Apply improvement to rules
+# Now all future features are protected! ✅
+```
+
+### Key Concepts
+
+**Learning vs. System Review:**
+
+| Aspect | System Review | Adaptive Learning |
+|--------|---------------|-------------------|
+| **Analyzes** | PIV process (plan vs. execution) | Technical patterns (code issues) |
+| **Improves** | Workflow efficiency | Rules, skills, validation |
+| **Output** | Process recommendations | Concrete improvements |
+
+**Semi-Automated Approach:**
+- ✅ **Automatic:** Pattern extraction, trend analysis, suggestion generation
+- ✅ **Manual:** Review and approval before applying changes
+- ✅ **Safe:** No automatic rule modifications without human oversight
+
+### Learning Artifacts
+
+```
+.claude/agents/learning/
+├── insights/           # What we learned from reviews
+├── suggestions/        # Proposed improvements (pending approval)
+├── applied/            # Successfully applied improvements
+└── learning-metrics.md # Dashboard showing progress
+```
+
+**What's Tracked:**
+- Total reviews analyzed
+- Issue trends (by category and severity)
+- Recurring issues (need attention)
+- Improvements generated vs. applied
+- Learning effectiveness metrics
+
+### FAQ
+
+**Q: Is learning mandatory?**
+A: **No, it's optional.** The adaptive-learning skill will suggest it, but you can skip. However, using it helps prevent recurring issues.
+
+**Q: How often should I run learning?**
+A: **After each code review** is ideal, but periodically (every 5-10 features) also works.
+
+**Q: Can I customize what gets tracked?**
+A: **Yes!** The learning system is modular and can be extended for project-specific needs.
+
+**Q: Do I have to apply every suggestion?**
+A: **No.** Suggestions are proposals. Review and approve only what makes sense for your project.
 
 ---
 

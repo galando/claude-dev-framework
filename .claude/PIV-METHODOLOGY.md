@@ -952,6 +952,145 @@ The validation is designed to run **automatically** as part of the execution flo
 
 ---
 
+## Phase 6: Learn (Optional - Continuous Improvement) 🆕
+
+### What Happens
+
+After code review completes, the **adaptive-learning skill** automatically suggests capturing learnings:
+
+```
+✅ Code review complete.
+
+Capture learnings? Run /validation:learn
+```
+
+**The Learning System:**
+- Analyzes code review artifacts to identify patterns
+- Extracts insights about issues and good practices
+- Generates improvement suggestions for rules, validation, and skills
+- Tracks learning metrics over time
+- Makes the framework smarter with every feature
+
+### Commands
+
+#### Learning Analysis
+
+```bash
+/validation:learn
+```
+
+Analyze code reviews to extract insights:
+- Parse all code review artifacts
+- Identify recurring issues (appears in 2+ reviews)
+- Extract good patterns for reinforcement
+- Generate learning insights artifact
+- Update metrics dashboard
+
+**Options:**
+```bash
+/validation:learn --last=5        # Analyze last 5 reviews only
+/validation:learn --review=path   # Analyze specific review
+```
+
+#### Improvement Suggestions
+
+```bash
+/validation:suggest-improvement <type> "<title>"
+```
+
+Generate structured improvement proposals:
+- Types: `rule`, `validation`, `skill`
+- Creates suggestion artifact with:
+  - Problem description
+  - Evidence from code reviews
+  - Proposed change
+  - Approval workflow
+
+**Example:**
+```bash
+/validation:suggest-improvement rule "Add N+1 query anti-pattern"
+```
+
+#### Learning Status
+
+```bash
+/validation:learning-status
+```
+
+Display learning metrics dashboard:
+- Total reviews analyzed
+- Issue trends by category and severity
+- Recurring issues needing attention
+- Improvements generated vs. applied
+- Learning effectiveness metrics
+
+### Artifacts Created
+
+#### Learning Insights Artifact
+`.claude/agents/learning/insights/learning-insights-{timestamp}.md`
+
+Includes:
+- Executive summary
+- Issues by severity and category
+- Recurring issues (improvement candidates)
+- Anti-patterns discovered
+- Good patterns found
+- Improvement suggestions
+
+#### Improvement Suggestion Artifact
+`.claude/agents/learning/suggestions/{suggestion-id}.md`
+
+Includes:
+- Problem statement
+- Evidence from code reviews
+- Proposed change
+- Rationale
+- Approval checklist
+- Application instructions
+
+#### Learning Metrics Dashboard
+`.claude/agents/learning/learning-metrics.md`
+
+Tracks:
+- Total reviews analyzed
+- Issue trends (↑↓→)
+- Recurring issues list
+- Applied improvements
+- Learning effectiveness
+
+### When to Use Learning
+
+| Scenario | Action |
+|----------|--------|
+| After code review | `/validation:learn` (auto-suggested) |
+| Before new feature | `/validation:learning-status` (check known issues) |
+| Recurring issue found | `/validation:suggest-improvement` (create fix) |
+| Periodically | `/validation:learn --last=5` (analyze trends) |
+
+### Learning vs. System Review
+
+**Key Differentiation:**
+
+| Aspect | System Review | Adaptive Learning |
+|--------|---------------|-------------------|
+| **Focus** | PIV process quality | Technical patterns |
+| **Analyzes** | Plan vs. execution | Code review outputs |
+| **Identifies** | Workflow inefficiencies | Recurring code issues |
+| **Improves** | Planning process | Rules, skills, validation |
+| **Output** | Process recommendations | Concrete improvements |
+
+**Complementary:** Both improve quality, but in different dimensions!
+
+### Success Criteria
+
+- [ ] Code reviews analyzed for patterns
+- [ ] Recurring issues identified
+- [ ] Improvement suggestions generated
+- [ ] Metrics dashboard updated
+- [ ] Framework rules/skills enhanced over time
+
+---
+
 ## Complete PIV Workflow
 
 ### Standard Feature Development
@@ -983,6 +1122,14 @@ The validation is designed to run **automatically** as part of the execution flo
        │
        └─▶ AUTOMATIC: /validation:execution-report
            └─▶ Generate execution report
+
+4. (Optional) /validation:learn 🆕
+   │
+   ├─▶ Adaptive-learning skill suggests after code review
+   ├─▶ Analyze code reviews for patterns
+   ├─▶ Extract insights and identify recurring issues
+   ├─▶ Generate improvement suggestions
+   └─▶ Framework gets smarter! 🧠
 ```
 
 ### Quick Bug Fix
