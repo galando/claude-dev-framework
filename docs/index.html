@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Universal AI Dev Framework - PIV methodology for Claude Code, Cursor, GitHub Copilot, and 20+ AI tools.">
-    <title>Universal AI Dev Framework - AI-Assisted Development</title>
+    <meta name="description" content="Universal AI Dev Framework - PIV methodology for Claude Code, Cursor, GitHub Copilot, and 20+ AI tools. Master AI-assisted development with the Prime-Implement-Validate methodology.">
+    <title>Universal AI Dev Framework - Master AI-Assisted Development</title>
 
-    <!-- Fonts: Space Grotesk (display) + Manrope (body) + JetBrains Mono (code) -->
+    <!-- Fonts: Inter (body) + JetBrains Mono (code) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Manrope:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <!-- Syntax Highlighting -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
@@ -23,237 +23,67 @@
         }
 
         :root {
-            /* Color Palette */
-            --color-primary: #0066FF;
-            --color-accent: #00D4FF;
-            --color-coral: #FF6B6B;
-            --color-dark: #1A1A1A;
-            --color-gray: #6B7280;
-            --color-light: #F8F9FA;
-            --color-white: #FFFFFF;
-            --color-border: #E5E7EB;
+            /* Light Theme */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F8FAFC;
+            --bg-tertiary: #F1F5F9;
+            --bg-card: #FFFFFF;
+            --bg-elevated: #FFFFFF;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --text-tertiary: #94A3B8;
+            --border-color: #E2E8F0;
+            --accent-primary: #3B82F6;
+            --accent-secondary: #60A5FA;
+            --accent-bg: rgba(59, 130, 246, 0.1);
+            --success: #10B981;
+            --warning: #F59E0B;
+            --code-bg: #1E293B;
 
             /* Typography */
-            --font-display: 'Space Grotesk', sans-serif;
-            --font-body: 'Manrope', sans-serif;
-            --font-code: 'JetBrains Mono', monospace;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
 
             /* Spacing */
-            --space-xs: 0.5rem;
-            --space-sm: 1rem;
-            --space-md: 1.5rem;
-            --space-lg: 2rem;
-            --space-xl: 3rem;
-            --space-2xl: 5rem;
+            --space-xs: 0.25rem;
+            --space-sm: 0.5rem;
+            --space-md: 1rem;
+            --space-lg: 1.5rem;
+            --space-xl: 2rem;
+            --space-2xl: 3rem;
+            --space-3xl: 4rem;
+            --space-4xl: 6rem;
 
             /* Layout */
             --max-width: 1200px;
-            --header-height: 70px;
+            --header-height: 64px;
+            --radius-sm: 6px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 16px;
         }
 
-        /* === DARK THEME === */
+        /* Dark Theme */
         [data-theme="dark"] {
-            /* Deep charcoal background for modern, professional look */
-            --color-primary: #5B8DEF;
-            --color-accent: #4DE1FF;
-            --color-coral: #FF6B6B;
-            --color-dark: #F0F0F0;
-            --color-gray: #A0A0A0;
-            --color-light: #0D0D0D;
-            --color-white: #1A1A1A;
-            --color-border: #333333;
-        }
-
-        /* Dark theme specific component styling */
-        [data-theme="dark"] .feature-card {
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        [data-theme="dark"] .feature-card:hover {
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-            border-color: var(--color-primary);
-        }
-
-        [data-theme="dark"] .quick-start {
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-        }
-
-        [data-theme="dark"] .doc-link-card {
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-        }
-
-        [data-theme="dark"] .doc-link-card:hover {
-            border-color: var(--color-primary);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        [data-theme="dark"] .header {
-            background: rgba(13, 13, 13, 0.95);
-            border-bottom: 1px solid var(--color-border);
-        }
-
-        [data-theme="dark"] .btn-secondary {
-            background: var(--color-white);
-            color: var(--color-dark);
-            border-color: var(--color-border);
-        }
-
-        [data-theme="dark"] .btn-secondary:hover {
-            border-color: var(--color-primary);
-            color: var(--color-primary);
-        }
-
-        [data-theme="dark"] .step-command {
-            background: var(--color-light);
-            border: 1px solid var(--color-border);
-        }
-
-        [data-theme="dark"] .install-command {
-            background: #000000;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Additional dark theme fixes for hardcoded colors */
-        [data-theme="dark"] .hero-badge {
-            background: rgba(91, 141, 239, 0.15);
-            border-color: rgba(91, 141, 239, 0.3);
-        }
-
-        [data-theme="dark"] .feature-card:hover {
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-        }
-
-        [data-theme="dark"] .feature-icon {
-            background: linear-gradient(135deg, rgba(91, 141, 239, 0.15), rgba(77, 225, 255, 0.15));
-        }
-
-        [data-theme="dark"] .doc-link-card:hover {
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        [data-theme="dark"] .doc-link-icon {
-            background: linear-gradient(135deg, rgba(91, 141, 239, 0.15), rgba(77, 225, 255, 0.15));
-        }
-
-        /* System preference detection */
-        @media (prefers-color-scheme: dark) {
-            :root:not([data-theme="light"]) {
-                --color-primary: #5B8DEF;
-                --color-accent: #4DE1FF;
-                --color-coral: #FF6B6B;
-                --color-dark: #F0F0F0;
-                --color-gray: #A0A0A0;
-                --color-light: #0D0D0D;
-                --color-white: #1A1A1A;
-                --color-border: #333333;
-            }
-
-            /* Apply dark theme component styles */
-            :root:not([data-theme="light"]) .feature-card {
-                background: var(--color-white);
-                border: 1px solid var(--color-border);
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            }
-
-            :root:not([data-theme="light"]) .feature-card:hover {
-                box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
-                border-color: var(--color-primary);
-            }
-
-            :root:not([data-theme="light"]) .quick-start {
-                background: var(--color-white);
-                border: 1px solid var(--color-border);
-            }
-
-            :root:not([data-theme="light"]) .doc-link-card {
-                background: var(--color-white);
-                border: 1px solid var(--color-border);
-            }
-
-            :root:not([data-theme="light"]) .doc-link-card:hover {
-                border-color: var(--color-primary);
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
-            }
-
-            :root:not([data-theme="light"]) .header {
-                background: rgba(13, 13, 13, 0.95);
-                border-bottom: 1px solid var(--color-border);
-            }
-
-            :root:not([data-theme="light"]) .nav-cta:hover {
-                background: #4A7FD4;
-            }
-
-            :root:not([data-theme="light"]) .btn-secondary {
-                background: var(--color-white);
-                color: var(--color-dark);
-                border-color: var(--color-border);
-            }
-
-            :root:not([data-theme="light"]) .btn-secondary:hover {
-                border-color: var(--color-primary);
-                color: var(--color-primary);
-            }
-
-            :root:not([data-theme="light"]) .step-command {
-                background: var(--color-light);
-                border: 1px solid var(--color-border);
-            }
-
-            :root:not([data-theme="light"]) .install-command {
-                background: #000000;
-                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-            }
-
-            :root:not([data-theme="light"]) .command-card {
-                background: rgba(255, 255, 255, 0.03);
-                border: 1px solid rgba(255, 255, 255, 0.08);
-            }
-
-            :root:not([data-theme="light"]) .command-card:hover {
-                background: rgba(255, 255, 255, 0.06);
-            }
-
-            /* Additional dark theme fixes for hardcoded colors */
-            :root:not([data-theme="light"]) .hero-badge {
-                background: rgba(91, 141, 239, 0.15);
-                border-color: rgba(91, 141, 239, 0.3);
-            }
-
-            :root:not([data-theme="light"]) .feature-card:hover {
-                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            }
-
-            :root:not([data-theme="light"]) .feature-icon {
-                background: linear-gradient(135deg, rgba(91, 141, 239, 0.15), rgba(77, 225, 255, 0.15));
-            }
-
-            :root:not([data-theme="light"]) .doc-link-card:hover {
-                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            }
-
-            :root:not([data-theme="light"]) .doc-link-icon {
-                background: linear-gradient(135deg, rgba(91, 141, 239, 0.15), rgba(77, 225, 255, 0.15));
-            }
-
-            /* Commands section and footer dark theme overrides */
-            :root:not([data-theme="light"]) .commands-section {
-                background: #000000;
-            }
-
-            :root:not([data-theme="light"]) .footer {
-                background: #000000;
-            }
+            --bg-primary: #0F1117;
+            --bg-secondary: #161922;
+            --bg-tertiary: #1E293B;
+            --bg-card: #1A1D26;
+            --bg-elevated: #1E293B;
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --text-tertiary: #64748B;
+            --border-color: #334155;
+            --accent-primary: #3B82F6;
+            --accent-secondary: #60A5FA;
+            --accent-bg: rgba(59, 130, 246, 0.15);
+            --code-bg: #0A0C10;
         }
 
         /* Smooth theme transition */
         *, *::before, *::after {
             transition-property: color, background-color, border-color;
-            transition-duration: 0.2s;
+            transition-duration: 0.15s;
         }
 
         html {
@@ -261,33 +91,11 @@
         }
 
         body {
-            font-family: var(--font-body);
-            color: var(--color-dark);
-            background: var(--color-light);
+            font-family: var(--font-sans);
+            color: var(--text-primary);
+            background: var(--bg-primary);
             line-height: 1.6;
             overflow-x: hidden;
-        }
-
-        /* === LIVING GRID BACKGROUND === */
-        .grid-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.4;
-            background-image:
-                linear-gradient(rgba(0, 102, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 102, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
         }
 
         /* === HEADER === */
@@ -297,103 +105,129 @@
             left: 0;
             right: 0;
             height: var(--header-height);
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--color-border);
+            background: rgba(15, 17, 23, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
             z-index: 1000;
-            display: flex;
-            align-items: center;
+        }
+
+        [data-theme="light"] .header {
+            background: rgba(255, 255, 255, 0.9);
         }
 
         .header-container {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding: 0 var(--space-md);
-            width: 100%;
+            padding: 0 var(--space-lg);
+            height: 100%;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
         }
 
         .logo {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--color-dark);
-            text-decoration: none;
             display: flex;
             align-items: center;
-            gap: var(--space-xs);
+            gap: var(--space-md);
+            text-decoration: none;
+            color: var(--text-primary);
         }
 
         .logo-mark {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            border-radius: 8px;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #FFFFFF;
-            font-size: 0.9rem;
+            color: white;
             font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .logo-text {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-primary);
         }
 
         .nav {
             display: flex;
-            gap: var(--space-lg);
             align-items: center;
+            gap: var(--space-xl);
         }
 
         .nav-link {
-            font-family: var(--font-body);
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--color-gray);
+            color: var(--text-secondary);
             text-decoration: none;
-            transition: color 0.2s;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.15s;
         }
 
         .nav-link:hover {
-            color: var(--color-primary);
+            color: var(--accent-primary);
         }
 
-        .nav-cta {
-            background: var(--color-primary);
-            color: #FFFFFF !important;
-            padding: var(--space-xs) var(--space-md);
-            border-radius: 8px;
-            transition: background 0.2s;
-        }
-
-        .nav-cta:hover {
-            background: #0052CC;
-        }
-
-        [data-theme="dark"] .nav-cta:hover {
-            background: #4A7FD4;
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
         }
 
         .theme-toggle {
             background: transparent;
             border: none;
             cursor: pointer;
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: 8px;
-            font-size: 1.25rem;
-            transition: background 0.2s;
+            padding: var(--space-sm);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.15s;
         }
 
         .theme-toggle:hover {
-            background: rgba(0, 102, 255, 0.1);
+            background: var(--bg-tertiary);
         }
 
-        [data-theme="dark"] .theme-icon-sun {
-            display: none;
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.15s;
+            border: 1px solid transparent;
         }
 
-        [data-theme="dark"] .theme-icon-moon {
-            display: inline;
+        .btn-primary {
+            background: var(--accent-primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2563EB;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border-color: var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent-primary);
+            color: var(--accent-primary);
         }
 
         .mobile-menu-btn {
@@ -402,54 +236,66 @@
             border: none;
             font-size: 1.5rem;
             cursor: pointer;
-            color: var(--color-dark);
+            color: var(--text-primary);
         }
 
         /* === HERO SECTION === */
         .hero {
-            position: relative;
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            padding: calc(var(--header-height) + var(--space-2xl)) var(--space-md) var(--space-2xl);
+            justify-content: center;
+            padding: calc(var(--header-height) + var(--space-4xl)) var(--space-lg) var(--space-4xl);
+            text-align: center;
+            position: relative;
             overflow: hidden;
         }
 
-        .hero-container {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            width: 100%;
-            position: relative;
-            z-index: 1;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at 30% 30%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 70%, rgba(96, 165, 250, 0.05) 0%, transparent 50%);
+            animation: heroGlow 20s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-2%, -2%) rotate(5deg); }
         }
 
         .hero-badge {
             display: inline-flex;
             align-items: center;
-            gap: var(--space-xs);
-            padding: var(--space-xs) var(--space-sm);
-            background: rgba(0, 102, 255, 0.08);
-            border: 1px solid rgba(0, 102, 255, 0.2);
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: var(--accent-bg);
+            border: 1px solid rgba(59, 130, 246, 0.2);
             border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            margin-bottom: var(--space-md);
-            animation: fadeInUp 0.6s ease-out;
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--accent-primary);
+            margin-bottom: var(--space-xl);
         }
 
         .hero-title {
-            font-family: var(--font-display);
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-size: clamp(2.5rem, 6vw, 4rem);
             font-weight: 700;
             line-height: 1.1;
-            color: var(--color-dark);
-            margin-bottom: var(--space-md);
-            animation: fadeInUp 0.6s ease-out 0.1s backwards;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: var(--space-lg);
+            max-width: 900px;
         }
 
         .hero-title-accent {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -457,117 +303,28 @@
 
         .hero-subtitle {
             font-size: 1.25rem;
-            color: var(--color-gray);
-            max-width: 600px;
-            margin-bottom: var(--space-lg);
-            animation: fadeInUp 0.6s ease-out 0.2s backwards;
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin-bottom: var(--space-2xl);
+            line-height: 1.7;
         }
 
         .hero-ctas {
             display: flex;
             gap: var(--space-md);
             flex-wrap: wrap;
-            animation: fadeInUp 0.6s ease-out 0.3s backwards;
+            justify-content: center;
         }
 
-        .btn {
-            font-family: var(--font-body);
-            font-size: 0.9375rem;
-            font-weight: 600;
-            padding: var(--space-sm) var(--space-lg);
-            border-radius: 10px;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: var(--space-xs);
-            transition: all 0.2s;
-            cursor: pointer;
-            border: 2px solid transparent;
+        .btn-large {
+            padding: var(--space-md) var(--space-xl);
+            font-size: 1rem;
         }
 
-        .btn-primary {
-            background: var(--color-coral);
-            color: #FFFFFF;
-            border-color: var(--color-coral);
-        }
-
-        .btn-primary:hover {
-            background: #FF5252;
-            border-color: #FF5252;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(255, 107, 107, 0.2);
-        }
-
-        .btn-secondary {
-            background: var(--color-white);
-            color: var(--color-dark);
-            border-color: var(--color-border);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--color-primary);
-            color: var(--color-primary);
-            transform: translateY(-2px);
-        }
-
-        .btn-link {
-            background: transparent;
-            color: var(--color-gray);
-            border: 2px solid transparent;
-            padding: var(--space-sm) var(--space-lg);
-        }
-
-        .btn-link:hover {
-            border-color: var(--color-border);
-            color: var(--color-dark);
-            transform: translateY(-2px);
-        }
-
-        /* === GEOMETRIC SHAPES === */
-        .geometric-shape {
-            position: absolute;
-            border-radius: 20px;
-            opacity: 0.1;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .shape-1 {
-            width: 300px;
-            height: 300px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            top: 10%;
-            right: -100px;
-            animation-delay: 0s;
-        }
-
-        .shape-2 {
-            width: 200px;
-            height: 200px;
-            background: var(--color-coral);
-            bottom: 20%;
-            right: 20%;
-            animation-delay: 2s;
-        }
-
-        .shape-3 {
-            width: 150px;
-            height: 150px;
-            background: var(--color-accent);
-            top: 30%;
-            left: 5%;
-            animation-delay: 4s;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        /* === SECTIONS === */
-        .section {
-            position: relative;
-            padding: var(--space-2xl) var(--space-md);
-            z-index: 1;
+        /* === METHODOLOGY SECTION === */
+        .methodology {
+            padding: var(--space-4xl) var(--space-lg);
+            background: var(--bg-secondary);
         }
 
         .section-container {
@@ -576,552 +333,417 @@
         }
 
         .section-label {
-            font-family: var(--font-code);
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary);
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--accent-primary);
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            margin-bottom: var(--space-sm);
-            display: block;
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border-color);
         }
 
         .section-title {
-            font-family: var(--font-display);
-            font-size: clamp(2rem, 4vw, 3rem);
+            font-size: clamp(2rem, 4vw, 2.75rem);
             font-weight: 700;
-            color: var(--color-dark);
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
             margin-bottom: var(--space-md);
         }
 
         .section-description {
             font-size: 1.125rem;
-            color: var(--color-gray);
-            max-width: 700px;
-            margin-bottom: var(--space-xl);
+            color: var(--text-secondary);
+            max-width: 650px;
+            margin-bottom: var(--space-3xl);
         }
 
-        /* === FEATURES GRID === */
-        .features-grid {
+        .methodology-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: var(--space-lg);
+            gap: var(--space-xl);
         }
 
-        .feature-card {
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-            border-radius: 16px;
-            padding: var(--space-lg);
-            transition: all 0.3s;
+        .methodology-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
             position: relative;
             overflow: hidden;
         }
 
-        .feature-card::before {
-            content: '';
+        .methodology-number {
+            font-family: var(--font-mono);
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--bg-tertiary);
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
-            opacity: 0;
-            transition: opacity 0.3s;
+            top: var(--space-md);
+            right: var(--space-md);
+            line-height: 1;
         }
 
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border-color: var(--color-primary);
-        }
-
-        .feature-card:hover::before {
-            opacity: 1;
-        }
-
-        .feature-icon {
+        .methodology-icon {
             width: 48px;
             height: 48px;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.1));
-            border-radius: 12px;
+            background: var(--accent-bg);
+            border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1.5rem;
-            margin-bottom: var(--space-md);
+            margin-bottom: var(--space-lg);
         }
 
-        .feature-title {
-            font-family: var(--font-display);
+        .methodology-title {
             font-size: 1.25rem;
             font-weight: 600;
-            color: var(--color-dark);
-            margin-bottom: var(--space-xs);
+            color: var(--text-primary);
+            margin-bottom: var(--space-sm);
         }
 
-        .feature-description {
-            font-size: 0.9375rem;
-            color: var(--color-gray);
+        .methodology-description {
+            color: var(--text-secondary);
             line-height: 1.7;
         }
 
-        /* === QUICK START === */
-        .quick-start {
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-            border-radius: 20px;
-            padding: var(--space-xl);
-            margin-bottom: var(--space-xl);
+        /* === FEATURES SECTION === */
+        .features {
+            padding: var(--space-4xl) var(--space-lg);
         }
 
-        .install-command {
-            background: var(--color-dark);
-            border-radius: 12px;
-            padding: var(--space-md);
-            margin: var(--space-lg) 0;
-            position: relative;
-            overflow: hidden;
+        .features-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+            align-items: center;
         }
 
-        .install-command::before {
-            content: 'bash';
-            position: absolute;
-            top: var(--space-sm);
-            left: var(--space-sm);
-            font-family: var(--font-code);
-            font-size: 0.625rem;
-            color: rgba(255, 255, 255, 0.5);
-            text-transform: uppercase;
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
         }
 
-        .install-command {
-            position: relative;
+        .feature-item {
+            display: flex;
+            gap: var(--space-lg);
+            align-items: flex-start;
         }
 
-        .copy-button {
-            position: absolute;
-            top: 50%;
-            right: var(--space-md);
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            padding: 8px 14px;
-            cursor: pointer;
-            font-size: 0.875rem;
-            font-weight: 500;
-            font-family: var(--font-body);
-            color: rgba(255, 255, 255, 0.9);
-            transition: all 0.2s ease;
+        .feature-item-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-bg);
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
-            gap: 8px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .copy-button svg {
+            justify-content: center;
+            font-size: 1.25rem;
             flex-shrink: 0;
         }
 
-        .copy-button:hover {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: rgba(255, 255, 255, 0.3);
-            transform: translateY(-50%) scale(1.02);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        .feature-item-content h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: var(--space-xs);
         }
 
-        .copy-button:active {
-            transform: translateY(-50%) scale(0.98);
+        .feature-item-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
 
-        .copy-button.copied {
-            background: rgba(91, 141, 239, 0.2);
-            border-color: rgba(91, 141, 239, 0.4);
-            color: rgba(91, 141, 239, 1);
-            box-shadow: 0 4px 12px rgba(91, 141, 239, 0.2);
+        .feature-highlight {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-xl);
+            padding: var(--space-xl);
+            overflow: hidden;
         }
 
-        [data-theme="dark"] .copy-button {
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: rgba(255, 255, 255, 0.9);
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        .code-window {
+            background: var(--code-bg);
+            border-radius: var(--radius-md);
+            overflow: hidden;
         }
 
-        [data-theme="dark"] .copy-button:hover {
-            background: rgba(255, 255, 255, 0.12);
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        .code-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-sm) var(--space-md);
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        [data-theme="dark"] .copy-button.copied {
-            background: rgba(91, 141, 239, 0.15);
-            border-color: rgba(91, 141, 239, 0.3);
-            color: rgba(91, 141, 239, 1);
-            box-shadow: 0 4px 12px rgba(91, 141, 239, 0.15);
+        .code-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #FF5F57;
         }
 
-        .install-command code {
-            font-family: var(--font-code);
+        .code-dot:nth-child(2) {
+            background: #FEBC2E;
+        }
+
+        .code-dot:nth-child(3) {
+            background: #28C840;
+        }
+
+        .code-title {
+            flex: 1;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--text-tertiary);
+        }
+
+        .code-content {
+            padding: var(--space-md);
+            font-family: var(--font-mono);
+            font-size: 0.8125rem;
+            line-height: 1.7;
+            color: #E2E8F0;
+            overflow-x: auto;
+        }
+
+        .code-content .comment {
+            color: #6B7280;
+        }
+
+        .code-content .command {
+            color: var(--accent-secondary);
+        }
+
+        .code-content .string {
+            color: #10B981;
+        }
+
+        .code-content .keyword {
+            color: #F59E0B;
+        }
+
+        /* === INSTALLATION SECTION === */
+        .installation {
+            padding: var(--space-4xl) var(--space-lg);
+            background: var(--bg-secondary);
+        }
+
+        .install-tabs {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            border-bottom: 1px solid var(--border-color);
+            overflow-x: auto;
+        }
+
+        .install-tab {
+            padding: var(--space-md) var(--space-lg);
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            color: var(--text-secondary);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .install-tab:hover {
+            color: var(--text-primary);
+        }
+
+        .install-tab.active {
+            color: var(--accent-primary);
+            border-bottom-color: var(--accent-primary);
+        }
+
+        .install-content {
+            display: none;
+        }
+
+        .install-content.active {
+            display: block;
+        }
+
+        .install-block {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+        }
+
+        .install-command {
+            background: var(--code-bg);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin: var(--space-lg) 0;
+            position: relative;
+            font-family: var(--font-mono);
             font-size: 0.875rem;
-            color: var(--color-accent);
-            word-break: break-all;
-            line-height: 1.8;
+            color: var(--accent-secondary);
+            overflow-x: auto;
         }
 
-        .steps-grid {
+        .copy-btn {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: var(--radius-sm);
+            padding: var(--space-sm) var(--space-md);
+            color: var(--text-secondary);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .copy-btn.copied {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(16, 185, 129, 0.3);
+            color: var(--success);
+        }
+
+        .install-steps {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: var(--space-lg);
+            margin-top: var(--space-xl);
         }
 
-        .step-card {
+        .install-step {
             position: relative;
             padding-left: var(--space-xl);
         }
 
-        .step-number {
+        .install-step-number {
             position: absolute;
             left: 0;
             top: 0;
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            border-radius: 10px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: var(--font-display);
-            font-size: 1.25rem;
-            font-weight: 700;
             color: white;
+            font-weight: 600;
+            font-size: 0.875rem;
         }
 
-        .step-title {
-            font-family: var(--font-display);
-            font-size: 1.125rem;
+        .install-step-title {
             font-weight: 600;
-            color: var(--color-dark);
+            color: var(--text-primary);
             margin-bottom: var(--space-xs);
         }
 
-        .step-description {
-            font-size: 0.875rem;
-            color: var(--color-gray);
-            margin-bottom: var(--space-sm);
-        }
-
-        .step-command {
-            background: var(--color-light);
-            border-radius: 8px;
-            padding: var(--space-sm);
-            font-family: var(--font-code);
-            font-size: 0.75rem;
-            color: var(--color-primary);
-            overflow-x: auto;
-        }
-
-        /* === COMMANDS SECTION === */
-        .commands-section {
-            background: #1A1A1A;
-            color: #FFFFFF;
-        }
-
-        .commands-section .section-label {
-            color: var(--color-accent);
-        }
-
-        .commands-section .section-title {
-            color: #FFFFFF;
-        }
-
-        .commands-section .section-description {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        /* Dark theme override for commands section */
-        [data-theme="dark"] .commands-section {
-            background: #000000;
-        }
-
-        .command-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            padding: var(--space-lg);
-            margin-bottom: var(--space-md);
-            transition: all 0.3s;
-        }
-
-        .command-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--color-primary);
-        }
-
-        .command-code {
-            font-family: var(--font-code);
-            font-size: 0.875rem;
-            color: var(--color-accent);
-            background: rgba(0, 0, 0, 0.3);
-            padding: var(--space-sm);
-            border-radius: 8px;
-            display: inline-block;
-            margin-bottom: var(--space-sm);
-        }
-
-        .command-title {
-            font-family: var(--font-display);
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: #FFFFFF;
-            margin-bottom: var(--space-xs);
-        }
-
-        .command-description {
+        .install-step-desc {
+            color: var(--text-secondary);
             font-size: 0.9375rem;
-            color: rgba(255, 255, 255, 0.7);
         }
 
-        [data-theme="dark"] .command-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+        /* === CTA SECTION === */
+        .cta {
+            padding: var(--space-4xl) var(--space-lg);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(96, 165, 250, 0.05));
+            text-align: center;
         }
 
-        [data-theme="dark"] .command-card:hover {
-            background: rgba(255, 255, 255, 0.06);
+        .cta-title {
+            font-size: clamp(2rem, 4vw, 2.75rem);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+            margin-bottom: var(--space-md);
         }
 
-        /* === DOCUMENTATION LINKS === */
-        .doc-categories {
+        .cta-subtitle {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto var(--space-xl);
+        }
+
+        /* === DOCUMENTATION SECTION === */
+        .docs {
+            padding: var(--space-4xl) var(--space-lg);
+        }
+
+        .docs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: var(--space-xl);
+            gap: var(--space-lg);
         }
 
-        .doc-category-title {
-            font-family: var(--font-display);
-            font-size: 1.25rem;
+        .docs-column h3 {
+            font-size: 1rem;
             font-weight: 600;
-            color: var(--color-dark);
+            color: var(--text-primary);
             margin-bottom: var(--space-md);
         }
 
-        .doc-link-card {
+        .docs-link {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             gap: var(--space-md);
             padding: var(--space-md);
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-            border-radius: 12px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
             text-decoration: none;
-            transition: all 0.2s;
+            color: var(--text-primary);
+            transition: all 0.15s;
             margin-bottom: var(--space-sm);
         }
 
-        .doc-link-card:hover {
-            border-color: var(--color-primary);
+        .docs-link:hover {
+            border-color: var(--accent-primary);
             transform: translateX(4px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
         }
 
-        .doc-link-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1), rgba(0, 212, 255, 0.1));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .docs-link-icon {
             font-size: 1.25rem;
-            flex-shrink: 0;
         }
 
-        .doc-link-content h4 {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--color-dark);
+        .docs-link-content h4 {
+            font-size: 0.9375rem;
+            font-weight: 500;
             margin-bottom: var(--space-xs);
         }
 
-        .doc-link-content p {
-            font-size: 0.875rem;
-            color: var(--color-gray);
-        }
-
-        /* === SEE IT IN ACTION === */
-        .action-trace {
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
-            border-radius: 20px;
-            padding: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-
-        .trace-step {
-            padding: var(--space-md);
-            border-left: 3px solid var(--color-border);
-            margin-bottom: var(--space-lg);
-            transition: all 0.3s;
-        }
-
-        .trace-step:hover {
-            border-left-color: var(--color-primary);
-            background: rgba(0, 102, 255, 0.02);
-        }
-
-        .trace-header {
-            display: flex;
-            align-items: center;
-            gap: var(--space-md);
-            margin-bottom: var(--space-md);
-        }
-
-        .trace-badge {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-            color: white;
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-family: var(--font-code);
-            font-size: 0.7rem;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        .trace-title {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--color-dark);
-            margin: 0;
-        }
-
-        .trace-content {
-            padding-left: var(--space-md);
-        }
-
-        .trace-command {
-            background: var(--color-dark);
-            color: var(--color-accent);
-            padding: var(--space-sm) var(--space-md);
-            border-radius: 8px;
-            font-family: var(--font-code);
-            font-size: 0.875rem;
-            display: inline-block;
-            margin-bottom: var(--space-md);
-        }
-
-        .trace-response {
-            font-size: 0.9375rem;
-            color: var(--color-gray);
-            line-height: 1.8;
-        }
-
-        .trace-response code {
-            background: rgba(0, 102, 255, 0.1);
-            color: var(--color-primary);
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: var(--font-code);
-            font-size: 0.85em;
-        }
-
-        .trace-loading {
-            color: var(--color-primary);
-            font-style: italic;
-        }
-
-        .skill-activation {
-            display: inline-block;
-            background: linear-gradient(135deg, rgba(91, 141, 239, 0.1), rgba(77, 225, 255, 0.1));
-            color: var(--color-primary);
-            padding: var(--space-xs) var(--space-sm);
-            border-radius: 8px;
-            font-family: var(--font-code);
-            font-size: 0.75rem;
-            font-weight: 600;
-            margin-bottom: var(--space-sm);
-        }
-
-        .action-summary {
-            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05), rgba(0, 212, 255, 0.05));
-            border: 1px solid rgba(0, 102, 255, 0.2);
-            border-radius: 16px;
-            padding: var(--space-lg);
-        }
-
-        .action-summary h3 {
-            font-family: var(--font-display);
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--color-dark);
-            margin-bottom: var(--space-md);
-        }
-
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: var(--space-md);
-        }
-
-        .summary-item {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--space-sm);
-            font-size: 0.9375rem;
-            color: var(--color-dark);
-        }
-
-        .summary-icon {
-            flex-shrink: 0;
-            font-size: 1.25rem;
-        }
-
-        /* Dark theme for action section */
-        [data-theme="dark"] .action-trace {
-            background: var(--color-white);
-            border-color: var(--color-border);
-        }
-
-        [data-theme="dark"] .trace-title {
-            color: var(--color-dark);
-        }
-
-        [data-theme="dark"] .trace-response {
-            color: var(--color-gray);
-        }
-
-        [data-theme="dark"] .trace-response code {
-            background: rgba(91, 141, 239, 0.15);
-            color: var(--color-primary);
-        }
-
-        [data-theme="dark"] .action-summary {
-            background: linear-gradient(135deg, rgba(91, 141, 239, 0.08), rgba(77, 225, 255, 0.08));
-            border-color: rgba(91, 141, 239, 0.2);
-        }
-
-        [data-theme="dark"] .action-summary h3 {
-            color: var(--color-dark);
-        }
-
-        [data-theme="dark"] .summary-item {
-            color: var(--color-dark);
+        .docs-link-content p {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
         }
 
         /* === FOOTER === */
         .footer {
-            background: #1A1A1A;
-            color: #FFFFFF;
-            padding: var(--space-2xl) var(--space-md) var(--space-lg);
-        }
-
-        /* Dark theme override for footer */
-        [data-theme="dark"] .footer {
-            background: #000000;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
+            padding: var(--space-3xl) var(--space-lg) var(--space-xl);
         }
 
         .footer-content {
@@ -1129,14 +751,14 @@
             margin: 0 auto;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
         }
 
-        .footer-section h4 {
-            font-family: var(--font-display);
-            font-size: 1rem;
+        .footer-column h4 {
+            font-size: 0.9375rem;
             font-weight: 600;
+            color: var(--text-primary);
             margin-bottom: var(--space-md);
         }
 
@@ -1149,61 +771,47 @@
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
+            color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.875rem;
-            transition: color 0.2s;
+            transition: color 0.15s;
         }
 
         .footer-links a:hover {
-            color: var(--color-accent);
+            color: var(--accent-primary);
         }
 
         .footer-attribution {
             font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: var(--space-sm);
+            color: var(--text-secondary);
         }
 
         .footer-attribution a {
-            color: var(--color-accent);
+            color: var(--accent-primary);
             text-decoration: none;
         }
 
         .footer-bottom {
             max-width: var(--max-width);
             margin: 0 auto;
-            padding-top: var(--space-lg);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--border-color);
             text-align: center;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.875rem;
-        }
-
-        /* === ANIMATIONS === */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
+            color: var(--text-tertiary);
+            font-size: 0.8125rem;
         }
 
         /* === RESPONSIVE === */
+        @media (max-width: 900px) {
+            .features-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-highlight {
+                order: -1;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav {
                 display: none;
@@ -1214,7 +822,7 @@
             }
 
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.25rem;
             }
 
             .hero-ctas {
@@ -1223,11 +831,7 @@
             }
 
             .btn {
-                justify-content: center;
-            }
-
-            .features-grid {
-                grid-template-columns: 1fr;
+                width: 100%;
             }
         }
 
@@ -1235,413 +839,370 @@
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
                 transition-duration: 0.01ms !important;
             }
         }
 
         :focus-visible {
-            outline: 2px solid var(--color-primary);
+            outline: 2px solid var(--accent-primary);
             outline-offset: 2px;
         }
     </style>
 </head>
 <body>
-    <!-- Living Grid Background -->
-    <div class="grid-background"></div>
-
     <!-- Header -->
     <header class="header">
         <div class="header-container">
             <a href="#" class="logo">
-                <span class="logo-mark">U</span>
-                <span>Universal AI Dev</span>
+                <div class="logo-mark">U</div>
+                <span class="logo-text">Universal AI Dev</span>
             </a>
+
             <nav class="nav">
+                <a href="#methodology" class="nav-link">Methodology</a>
                 <a href="#features" class="nav-link">Features</a>
-                <a href="#quick-start" class="nav-link">Quick Start</a>
-                <a href="#see-it-in-action" class="nav-link">See It In Action</a>
-                <a href="#commands" class="nav-link">Commands</a>
-                <a href="#documentation" class="nav-link">Documentation</a>
-                <a href="https://github.com/galando/universal-ai-dev-framework" class="nav-link nav-cta">View on GitHub</a>
-                <button class="nav-link theme-toggle" aria-label="Toggle dark theme">
-                    <span class="theme-icon-sun">☀️</span>
-                    <span class="theme-icon-moon" style="display: none;">🌙</span>
-                </button>
+                <a href="#installation" class="nav-link">Installation</a>
+                <a href="#docs" class="nav-link">Documentation</a>
             </nav>
-            <button class="mobile-menu-btn" aria-label="Toggle menu">☰</button>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                <a href="https://github.com/galando/universal-ai-dev-framework" class="btn btn-primary">View on GitHub</a>
+                <button class="mobile-menu-btn" aria-label="Toggle menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
         <section class="hero">
-            <!-- Geometric Shapes -->
-            <div class="geometric-shape shape-1"></div>
-            <div class="geometric-shape shape-2"></div>
-            <div class="geometric-shape shape-3"></div>
+            <div class="hero-badge">
+                <span>✨</span>
+                <span>Universal AI Development Framework</span>
+            </div>
+            <h1 class="hero-title">
+                Master AI-Assisted Development with <span class="hero-title-accent">PIV Methodology</span>
+            </h1>
+            <p class="hero-subtitle">
+                The universal framework to orchestrate Claude Code, Cursor, and GitHub Copilot for predictable, high-quality engineering. Build better software with strict TDD, auto-activating skills, and adaptive learning.
+            </p>
+            <div class="hero-ctas">
+                <a href="#installation" class="btn btn-primary btn-large">Get Started →</a>
+                <a href="#methodology" class="btn btn-secondary btn-large">Explore Methodology</a>
+            </div>
+        </section>
 
-            <div class="hero-container">
-                <span class="hero-badge">✨ AI-Assisted Development Framework</span>
-                <h1 class="hero-title">
-                    Build better software with
-                    <span class="hero-title-accent">Universal AI Dev Framework</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Universal PIV (Prime-Implement-Validate) methodology for AI-assisted development.
-                    Works with <strong>Claude Code</strong>, <strong>Cursor</strong>,
-                    <strong>GitHub Copilot</strong>, and 20+ AI coding tools.
+        <!-- Methodology Section -->
+        <section class="methodology" id="methodology">
+            <div class="section-container">
+                <div class="section-label">The PIV Methodology</div>
+                <h2 class="section-title">A comprehensive engineering loop designed to maximize LLM performance</h2>
+                <p class="section-description">
+                    Prime → Implement → Validate: A systematic approach to AI-assisted development that ensures quality, prevents technical debt, and continuously improves.
                 </p>
-                <div class="hero-ctas">
-                    <a href="#quick-start" class="btn btn-primary">Get Started →</a>
-                    <a href="#see-it-in-action" class="btn btn-secondary">See It In Action →</a>
-                    <a href="https://github.com/galando/universal-ai-dev-framework" class="btn btn-link">View on GitHub</a>
+
+                <div class="methodology-grid">
+                    <div class="methodology-card">
+                        <span class="methodology-number">01</span>
+                        <div class="methodology-icon">💡</div>
+                        <h3 class="methodology-title">Prime</h3>
+                        <p class="methodology-description">
+                            Load codebase context before making changes. Understand existing patterns, architecture, and conventions. Smart context loading reduces token usage while maximizing understanding.
+                        </p>
+                    </div>
+
+                    <div class="methodology-card">
+                        <span class="methodology-number">02</span>
+                        <div class="methodology-icon">⚡</div>
+                        <h3 class="methodology-title">Implement</h3>
+                        <p class="methodology-description">
+                            Write tests FIRST (strict TDD), then minimal code. Auto-activating skills enforce best practices in real-time. RED → GREEN → REFACTOR cycle is mandatory—zero exceptions.
+                        </p>
+                    </div>
+
+                    <div class="methodology-card">
+                        <span class="methodology-number">03</span>
+                        <div class="methodology-icon">✓</div>
+                        <h3 class="methodology-title">Validate</h3>
+                        <p class="methodology-description">
+                            Automatic validation runs after every implementation. Code review, security checks, test coverage analysis. The framework captures learnings to continuously improve.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Features Section -->
-        <section class="section" id="features">
+        <section class="features" id="features">
             <div class="section-container">
-                <span class="section-label">Why PIV?</span>
-                <h2 class="section-title">A complete methodology for AI-assisted development</h2>
-                <p class="section-description">Everything you need to build high-quality software with AI assistants, from strict TDD enforcement to automatic validation. Works with Claude Code, Cursor, and 20+ tools.</p>
+                <div class="features-layout">
+                    <div class="features-list">
+                        <div class="section-label">Built for the next generation of engineers</div>
+                        <h2 class="section-title">Everything you need for AI-assisted development</h2>
 
-                <div class="features-grid">
-                    <div class="feature-card reveal">
-                        <div class="feature-icon">🚨</div>
-                        <h3 class="feature-title">Strict Test-Driven Development</h3>
-                        <p class="feature-description">MANDATORY TDD with RED-GREEN-REFACTOR cycle. Zero tolerance policy - code written before tests will be deleted. Skills enforce TDD in real-time.</p>
+                        <div class="feature-item">
+                            <div class="feature-item-icon">🚨</div>
+                            <div class="feature-item-content">
+                                <h3>Strict Test-Driven Development</h3>
+                                <p>MANDATORY TDD with RED-GREEN-REFACTOR cycle. Skills enforce TDD in real-time—code written before tests will be deleted.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-item-icon">🧠</div>
+                            <div class="feature-item-content">
+                                <h3>Adaptive Learning System</h3>
+                                <p>Framework gets smarter with every feature. Analyzes code reviews to identify patterns and systematically improve rules and skills.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-item-icon">⚙️</div>
+                            <div class="feature-item-content">
+                                <h3>Technology Agnostic</h3>
+                                <p>Universal PIV methodology applicable to any stack. Works with Spring Boot, Node.js, Python, React, and 20+ AI coding tools.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-item-icon">🔒</div>
+                            <div class="feature-item-content">
+                                <h3>Built-in Security & Quality</h3>
+                                <p>Auto-activating skills for security review, API design, and code quality. Enforces best practices in real-time.</p>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="feature-card reveal">
-                        <div class="feature-icon">⚡</div>
-                        <h3 class="feature-title">Skills System: Auto-Activating Behaviors</h3>
-                        <p class="feature-description">Real-time enforcement based on file patterns and commands. TDD, test-writing, API design, security, and code-review skills enhance development.</p>
-                    </div>
-
-                    <div class="feature-card reveal" style="border-color: var(--color-primary); box-shadow: 0 4px 20px rgba(91, 141, 239, 0.3);">
-                        <div class="feature-icon">🧠</div>
-                        <h3 class="feature-title">Adaptive Learning System <span style="background: var(--color-primary); color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; margin-left: 8px;">NEW</span></h3>
-                        <p class="feature-description"><strong>Framework gets smarter with every feature!</strong> Analyzes code reviews to identify recurring patterns, prevent technical debt, and systematically improve rules and skills over time.</p>
-                    </div>
-
-                    <div class="feature-card reveal">
-                        <div class="feature-icon">🔧</div>
-                        <h3 class="feature-title">Technology Agnostic Core</h3>
-                        <p class="feature-description">Universal PIV methodology applicable to any technology stack. Modular design allows picking only what you need. Progressive enhancement.</p>
-                    </div>
-
-                    <div class="feature-card reveal">
-                        <div class="feature-icon">📏</div>
-                        <h3 class="feature-title">Modular Rules System</h3>
-                        <p class="feature-description">Universal rules apply to all projects (git, testing, documentation, strict TDD). Technology rules auto-load based on your stack.</p>
-                    </div>
-
-                    <div class="feature-card reveal">
-                        <div class="feature-icon">⚙️</div>
-                        <h3 class="feature-title">Command Infrastructure</h3>
-                        <p class="feature-description">Standardized Claude Code commands for PIV workflow: prime, plan-feature, execute, validation, bug fixes, and more.</p>
-                    </div>
-
-                    <div class="feature-card reveal">
-                        <div class="feature-icon">🎨</div>
-                        <h3 class="feature-title">Technology Templates</h3>
-                        <p class="feature-description">Pre-built templates for Spring Boot, Node.js/Express, Python/FastAPI, React, PostgreSQL, and Docker with best practices.</p>
+                    <div class="feature-highlight">
+                        <div class="code-window">
+                            <div class="code-header">
+                                <span class="code-dot"></span>
+                                <span class="code-dot"></span>
+                                <span class="code-dot"></span>
+                                <span class="code-title">terminal</span>
+                            </div>
+                            <div class="code-content"><span class="comment"># Prime your workspace</span>
+<span class="command">/piv_loop:prime</span>
+<br>
+<span class="comment"># Plan your feature</span>
+<span class="command">/piv_loop:plan-feature "Add user auth"</span>
+<br>
+<span class="comment"># Execute with TDD enforced</span>
+<span class="command">/piv_loop:execute</span>
+<br>
+<span class="comment"># 🔴 test-driven-development SKILL ACTIVATES</span>
+<span class="comment"># → Writing test FIRST...</span>
+<span class="comment"># → Test FAILS ✅</span>
+<span class="comment"># → Writing minimal code...</span>
+<span class="comment"># → Test PASSES ✅</span>
+<span class="comment"># → Re factoring...</span>
+<span class="comment"># → Tests STILL PASS ✅</span>
+<br>
+<span class="comment"># Auto-validation runs automatically</span>
+<span class="keyword"># Done!</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Quick Start Section -->
-        <section class="section" id="quick-start">
+        <!-- Installation Section -->
+        <section class="installation" id="installation">
             <div class="section-container">
-                <span class="section-label">Quick Start</span>
+                <div class="section-label">Installation</div>
                 <h2 class="section-title">Get started in 5 minutes</h2>
-                <p class="section-description">Install the framework and start building with PIV methodology in minutes.</p>
+                <p class="section-description">
+                    Install the framework and start building with PIV methodology. Choose your AI tool below.
+                </p>
 
-                <div class="quick-start reveal">
-                    <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-bottom: var(--space-md);">🔷 Claude Code (Full Experience)</h3>
-                    <div class="install-command">
-                        <code>/plugin marketplace add galando/universal-ai-dev-framework/marketplace</code>
-                    </div>
-                    <div class="install-command">
-                        <code>/plugin install piv@universal-ai-dev-framework</code>
-                    </div>
+                <div class="install-tabs">
+                    <button class="install-tab active" data-tab="claude-code">Claude Code</button>
+                    <button class="install-tab" data-tab="cursor">Cursor / Others</button>
+                </div>
 
-                    <h3 style="font-family: var(--font-display); font-size: 1.25rem; margin-top: var(--space-lg); margin-bottom: var(--space-md);">🔶 Cursor / Other AI Tools</h3>
-                    <div class="install-command">
-                        <code>curl -s https://raw.githubusercontent.com/galando/universal-ai-dev-framework/main/scripts/piv.sh | bash</code>
-                        <button class="copy-button" aria-label="Copy install command" data-copy-target="install-command">
-                            <svg class="copy-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg>
-                            <svg class="copy-icon-copied" style="display: none;" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="20 6 9 17 4 12"></polyline>
-                            </svg>
-                            <span class="copy-text">Copy</span>
-                        </button>
-                    </div>
+                <div class="install-content active" id="claude-code">
+                    <div class="install-block">
+                        <h3 style="font-size: 1.125rem; margin-bottom: var(--space-md);">Claude Code (Full Experience) ⭐</h3>
 
-                    <div class="steps-grid">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <h4 class="step-title">Prime</h4>
-                            <p class="step-description">Load context and prime workspace</p>
-                            <div class="step-command">/piv_loop:prime</div>
+                        <div class="install-command">
+                            <code>/plugin marketplace add galando/universal-ai-dev-framework</code>
+                            <button class="copy-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy</span>
+                            </button>
                         </div>
 
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <h4 class="step-title">Implement</h4>
-                            <p class="step-description">Plan features and execute implementation (following TDD)</p>
-                            <div class="step-command">/piv_loop:plan-feature "Add user authentication"<br>/piv_loop:execute</div>
+                        <div class="install-command">
+                            <code>/plugin install piv</code>
+                            <button class="copy-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy</span>
+                            </button>
                         </div>
 
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <h4 class="step-title">Validate</h4>
-                            <p class="step-description">Automatic validation runs after execute</p>
-                            <div class="step-command"># Runs automatically - no manual step needed!</div>
+                        <div class="install-steps">
+                            <div class="install-step">
+                                <div class="install-step-number">1</div>
+                                <div class="install-step-title">Prime</div>
+                                <div class="install-step-desc">Load context and prime workspace</div>
+                            </div>
+                            <div class="install-step">
+                                <div class="install-step-number">2</div>
+                                <div class="install-step-title">Plan</div>
+                                <div class="install-step-desc">Create implementation plan</div>
+                            </div>
+                            <div class="install-step">
+                                <div class="install-step-number">3</div>
+                                <div class="install-step-title">Execute</div>
+                                <div class="install-step-desc">Build with TDD enforced</div>
+                            </div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="install-content" id="cursor">
+                    <div class="install-block">
+                        <h3 style="font-size: 1.125rem; margin-bottom: var(--space-md);">Cursor / Other AI Tools</h3>
+
+                        <div class="install-command">
+                            <code>curl -s https://raw.githubusercontent.com/galando/universal-ai-dev-framework/main/scripts/piv.sh | bash</code>
+                            <button class="copy-btn">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                </svg>
+                                <span>Copy</span>
+                            </button>
+                        </div>
+
+                        <p style="color: var(--text-secondary); margin-top: var(--space-lg);">
+                            Generates <code>AGENTS.md</code> - universal AI agent instructions that Cursor and other tools read automatically.
+                        </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- See It In Action Section -->
-        <section class="section" id="see-it-in-action">
+        <!-- CTA Section -->
+        <section class="cta">
             <div class="section-container">
-                <span class="section-label">See It In Action</span>
-                <h2 class="section-title">Watch PIV power a real feature from start to finish</h2>
-                <p class="section-description">See how the framework guides AI-assisted development with active enforcement, context loading, and adaptive learning.</p>
-
-                <div class="action-trace reveal">
-                    <div class="trace-step">
-                        <div class="trace-header">
-                            <span class="trace-badge">STEP 1</span>
-                            <h4 class="trace-title">Prime Context</h4>
-                        </div>
-                        <div class="trace-content">
-                            <div class="trace-command">/piv:prime</div>
-                            <div class="trace-response">
-                                <strong>Claude:</strong> <span class="trace-loading">Loading project context...</span><br>
-                                → Project: Spring Boot + React + PostgreSQL<br>
-                                → Architecture: Controller → Service → Repository<br>
-                                → 15 Java classes, 8 React components identified
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trace-step">
-                        <div class="trace-header">
-                            <span class="trace-badge">STEP 2</span>
-                            <h4 class="trace-title">Create Plan</h4>
-                        </div>
-                        <div class="trace-content">
-                            <div class="trace-command">/piv:plan-feature "Add password reset flow"</div>
-                            <div class="trace-response">
-                                <strong>Claude:</strong> <span class="trace-loading">Creating implementation plan...</span><br>
-                                → Loads PIV-METHODOLOGY.md for planning steps<br>
-                                → Loads Spring Boot security patterns from <code>technologies/</code><br>
-                                → Loads PostgreSQL schema patterns<br>
-                                → Plan saved to <code>.claude/agents/plans/</code>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trace-step">
-                        <div class="trace-header">
-                            <span class="trace-badge">STEP 3</span>
-                            <h4 class="trace-title">Execute with TDD</h4>
-                        </div>
-                        <div class="trace-content">
-                            <div class="trace-command">/piv:execute</div>
-                            <div class="trace-response">
-                                <span class="skill-activation">🔴 test-driven-development SKILL ACTIVATES</span><br><br>
-                                <strong>🔴 RED:</strong> Writing test FIRST...<br>
-                                → Creates <code>PasswordResetServiceTest.java</code><br>
-                                → Test FAILS ✅<br><br>
-                                <strong>🟢 GREEN:</strong> Writing minimal code...<br>
-                                → Creates <code>PasswordResetService.java</code><br>
-                                → Test PASSES ✅<br><br>
-                                <strong>🔵 REFACTOR:</strong> Improving...<br>
-                                → Extracts <code>EmailService</code> to separate class<br>
-                                → Tests STILL PASS ✅
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trace-step">
-                        <div class="trace-header">
-                            <span class="trace-badge">STEP 4</span>
-                            <h4 class="trace-title">Auto Code Review</h4>
-                        </div>
-                        <div class="trace-content">
-                            <div class="trace-response">
-                                <span class="skill-activation">validation:code-review SKILL ACTIVATES</span><br><br>
-                                <strong>Claude:</strong> Reviewing code...<br>
-                                → ✅ Uses bcrypt for password hashing<br>
-                                → ✅ Token expires in 1 hour<br>
-                                → ⚠️ Suggestion: Add rate limiting<br>
-                                → Report saved to <code>.claude/agents/code-reviews/</code>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="trace-step">
-                        <div class="trace-header">
-                            <span class="trace-badge">STEP 5</span>
-                            <h4 class="trace-title">Capture Learning</h4>
-                        </div>
-                        <div class="trace-content">
-                            <div class="trace-response">
-                                <span class="skill-activation">validation:learn SKILL ACTIVATES</span><br><br>
-                                <strong>Claude:</strong> Extracting patterns from review...<br>
-                                → Pattern: Token expiration = 1 hour<br>
-                                → Pattern: Use bcrypt for passwords<br>
-                                → Saves to <code>.claude/agents/learnings/</code><br><br>
-                                <em>Next security feature: "Based on past learnings, I'll use bcrypt and 1-hour expiration..."</em>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="action-summary reveal">
-                    <h3 style="font-family: var(--font-display); font-size: 1.125rem; margin-bottom: var(--space-md);">This is the PIV difference</h3>
-                    <div class="summary-grid">
-                        <div class="summary-item">
-                            <span class="summary-icon">✅</span>
-                            <span>Active enforcement - Skills activate in real-time</span>
-                        </div>
-                        <div class="summary-item">
-                            <span class="summary-icon">✅</span>
-                            <span>Captures learning - Framework gets smarter</span>
-                        </div>
-                        <div class="summary-item">
-                            <span class="summary-icon">✅</span>
-                            <span>Technology-aware - Loads patterns from templates</span>
-                        </div>
-                        <div class="summary-item">
-                            <span class="summary-icon">✅</span>
-                            <span>Full trace - Every step recorded and reviewable</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Commands Section -->
-        <section class="section commands-section" id="commands">
-            <div class="section-container">
-                <span class="section-label">Commands</span>
-                <h2 class="section-title">Essential commands for AI-assisted development</h2>
-                <p class="section-description">Core PIV commands that power your development workflow.</p>
-
-                <div class="command-card reveal">
-                    <code class="command-code">/piv_loop:prime</code>
-                    <h4 class="command-title">Prime Context</h4>
-                    <p class="command-description">Load codebase context and understanding. Run at the start of each session or when switching contexts.</p>
-                </div>
-
-                <div class="command-card reveal">
-                    <code class="command-code">/piv_loop:plan-feature "description"</code>
-                    <h4 class="command-title">Create Implementation Plan</h4>
-                    <p class="command-description">Create detailed implementation plan with deep codebase analysis. Use for complex features or refactoring.</p>
-                </div>
-
-                <div class="command-card reveal">
-                    <code class="command-code">/piv_loop:execute</code>
-                    <h4 class="command-title">Execute Plan</h4>
-                    <p class="command-description">Execute implementation plan following strict TDD. Automatic validation runs after completion.</p>
-                </div>
-
-                <div class="command-card reveal">
-                    <code class="command-code">/validation:validate</code>
-                    <h4 class="command-title">Run Validation</h4>
-                    <p class="command-description">Run full validation pipeline (automatic after execute). Includes environment check, compilation, tests, coverage.</p>
-                </div>
-
-                <div class="command-card reveal" style="border-color: var(--color-primary); background: linear-gradient(135deg, rgba(91, 141, 239, 0.05), rgba(77, 225, 255, 0.05));">
-                    <code class="command-code">/validation:learn <span style="color: var(--color-primary); font-size: 0.85em;">🆕</span></code>
-                    <h4 class="command-title">Extract Learnings</h4>
-                    <p class="command-description">Analyze code reviews to identify recurring patterns, extract insights, and generate improvement suggestions. Framework gets smarter!</p>
-                </div>
-
-                <div class="command-card reveal" style="border-color: var(--color-primary); background: linear-gradient(135deg, rgba(91, 141, 239, 0.05), rgba(77, 225, 255, 0.05));">
-                    <code class="command-code">/validation:learning-status <span style="color: var(--color-primary); font-size: 0.85em;">🆕</span></code>
-                    <h4 class="command-title">Learning Dashboard</h4>
-                    <p class="command-description">View learning metrics dashboard with issue trends, recurring problems, and improvement tracking. Monitor framework evolution.</p>
+                <h2 class="cta-title">Ready to ship faster with confidence?</h2>
+                <p class="cta-subtitle">
+                    Join developers who have switched to PIV to accelerate AI-assisted development while maintaining code quality and preventing technical debt.
+                </p>
+                <div class="hero-ctas">
+                    <a href="#installation" class="btn btn-primary btn-large">Get Started Free</a>
+                    <a href="https://github.com/galando/universal-ai-dev-framework" class="btn btn-secondary btn-large">View on GitHub</a>
                 </div>
             </div>
         </section>
 
         <!-- Documentation Section -->
-        <section class="section" id="documentation">
+        <section class="docs" id="docs">
             <div class="section-container">
-                <span class="section-label">Documentation</span>
+                <div class="section-label">Documentation</div>
                 <h2 class="section-title">Comprehensive guides and documentation</h2>
-                <p class="section-description">Everything you need to master the PIV methodology and build amazing software.</p>
 
-                <div class="doc-categories">
-                    <div>
-                        <h3 class="doc-category-title">Getting Started</h3>
-                        <a href="https://github.com/galando/universal-ai-dev-framework#quick-start" class="doc-link-card">
-                            <div class="doc-link-icon">📖</div>
-                            <div class="doc-link-content">
+                <div class="docs-grid">
+                    <div class="docs-column">
+                        <h3>Getting Started</h3>
+                        <a href="https://github.com/galando/universal-ai-dev-framework#quick-start" class="docs-link">
+                            <span class="docs-link-icon">📖</span>
+                            <div class="docs-link-content">
                                 <h4>Quick Start</h4>
                                 <p>Get started in 5 minutes</p>
                             </div>
                         </a>
-                        <a href="https://github.com/galando/universal-ai-dev-framework#your-first-feature" class="doc-link-card">
-                            <div class="doc-link-icon">🎯</div>
-                            <div class="doc-link-content">
+                        <a href="https://github.com/galando/universal-ai-dev-framework#your-first-feature" class="docs-link">
+                            <span class="docs-link-icon">🎯</span>
+                            <div class="docs-link-content">
                                 <h4>Your First Feature</h4>
                                 <p>Walkthrough of first feature</p>
                             </div>
                         </a>
-                        <a href="https://github.com/galando/universal-ai-dev-framework/blob/main/docs/FAQ.md" class="doc-link-card">
-                            <div class="doc-link-icon">❓</div>
-                            <div class="doc-link-content">
+                        <a href="https://github.com/galando/universal-ai-dev-framework/blob/main/docs/FAQ.md" class="docs-link">
+                            <span class="docs-link-icon">❓</span>
+                            <div class="docs-link-content">
                                 <h4>FAQ</h4>
                                 <p>Frequently asked questions</p>
                             </div>
                         </a>
                     </div>
 
-                    <div>
-                        <h3 class="doc-category-title">Methodology</h3>
-                        <a href="https://github.com/galando/universal-ai-dev-framework/blob/main/.claude/reference/methodology/PIV-METHODOLOGY.md" class="doc-link-card">
-                            <div class="doc-link-icon">📚</div>
-                            <div class="doc-link-content">
+                    <div class="docs-column">
+                        <h3>Methodology</h3>
+                        <a href="https://github.com/galando/universal-ai-dev-framework/blob/main/.claude/reference/methodology/PIV-METHODOLOGY.md" class="docs-link">
+                            <span class="docs-link-icon">📚</span>
+                            <div class="docs-link-content">
                                 <h4>PIV Methodology</h4>
                                 <p>Complete methodology guide</p>
                             </div>
                         </a>
-                        <a href="https://github.com/galando/universal-ai-dev-framework/blob/main/.claude/CLAUDE.md" class="doc-link-card">
-                            <div class="doc-link-icon">⚙️</div>
-                            <div class="doc-link-content">
+                        <a href="https://github.com/galando/universal-ai-dev-framework/blob/main/.claude/CLAUDE.md" class="docs-link">
+                            <span class="docs-link-icon">⚙️</span>
+                            <div class="docs-link-content">
                                 <h4>Project Instructions</h4>
                                 <p>Quick reference for Claude Code</p>
                             </div>
                         </a>
-                    </div>
-
-                    <div>
-                        <h3 class="doc-category-title">Contributing</h3>
-                        <a href="https://github.com/galando/universal-ai-dev-framework/blob/main/CONTRIBUTING.md" class="doc-link-card">
-                            <div class="doc-link-icon">🤝</div>
-                            <div class="doc-link-content">
-                                <h4>Contributing Guidelines</h4>
-                                <p>How to contribute to the framework</p>
+                        <a href="https://github.com/galando/universal-ai-dev-framework/blob/main/docs/getting-started/05-cursor-support.md" class="docs-link">
+                            <span class="docs-link-icon">🖥️</span>
+                            <div class="docs-link-content">
+                                <h4>Cursor Support</h4>
+                                <p>Using PIV with Cursor</p>
                             </div>
                         </a>
-                        <a href="https://github.com/galando/universal-ai-dev-framework/issues" class="doc-link-card">
-                            <div class="doc-link-icon">🐛</div>
-                            <div class="doc-link-content">
+                    </div>
+
+                    <div class="docs-column">
+                        <h3>Community</h3>
+                        <a href="https://github.com/galando/universal-ai-dev-framework/blob/main/CONTRIBUTING.md" class="docs-link">
+                            <span class="docs-link-icon">🤝</span>
+                            <div class="docs-link-content">
+                                <h4>Contributing</h4>
+                                <p>How to contribute</p>
+                            </div>
+                        </a>
+                        <a href="https://github.com/galando/universal-ai-dev-framework/issues" class="docs-link">
+                            <span class="docs-link-icon">🐛</span>
+                            <div class="docs-link-content">
                                 <h4>Issue Tracker</h4>
                                 <p>Report bugs and request features</p>
+                            </div>
+                        </a>
+                        <a href="https://buymeacoffee.com/galando" class="docs-link">
+                            <span class="docs-link-icon">☕</span>
+                            <div class="docs-link-content">
+                                <h4>Support</h4>
+                                <p>Buy Me A Coffee</p>
                             </div>
                         </a>
                     </div>
@@ -1653,37 +1214,46 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>Links</h4>
+            <div class="footer-column">
+                <div style="display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-md);">
+                    <div style="width: 32px; height: 32px; background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary)); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700;">U</div>
+                    <span style="font-weight: 600;">Universal AI Dev</span>
+                </div>
+                <p class="footer-attribution">
+                    PIV (Prime-Implement-Validate) methodology for AI-assisted development.
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>Framework</h4>
                 <ul class="footer-links">
                     <li><a href="https://github.com/galando/universal-ai-dev-framework">GitHub Repository</a></li>
                     <li><a href="https://github.com/galando/universal-ai-dev-framework/blob/main/LICENSE">MIT License</a></li>
-                    <li><a href="https://github.com/galando/universal-ai-dev-framework/issues">Issue Tracker</a></li>
+                    <li><a href="https://github.com/galando/universal-ai-dev-framework/releases">Releases</a></li>
                 </ul>
             </div>
 
-            <div class="footer-section">
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/galando/universal-ai-dev-framework/blob/main/.claude/reference/methodology/PIV-METHODOLOGY.md">Methodology Guide</a></li>
+                    <li><a href="https://github.com/galando/universal-ai-dev-framework/blob/main/docs/README.md">Documentation</a></li>
+                    <li><a href="https://deepwiki.com/galando/universal-ai-dev-framework">DeepWiki</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
                 <h4>Community</h4>
                 <ul class="footer-links">
                     <li><a href="https://github.com/galando/universal-ai-dev-framework/blob/main/CONTRIBUTING.md">Contributing Guidelines</a></li>
-                    <li><a href="https://buymeacoffee.com/galando">Buy Me A Coffee</a></li>
-                    <li><a href="https://deepwiki.com/galando/universal-ai-dev-framework">Ask DeepWiki</a></li>
+                    <li><a href="https://github.com/galando/universal-ai-dev-framework/issues">Issue Tracker</a></li>
+                    <li><a href="https://buymeacoffee.com/galando">Support the Project</a></li>
                 </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Attribution</h4>
-                <p class="footer-attribution">
-                    The PIV Methodology was created by <a href="https://github.com/coleam00">Cole Medin</a>
-                </p>
-                <p class="footer-attribution">
-                    Made with ❤️ for the Claude Code community
-                </p>
             </div>
         </div>
 
         <div class="footer-bottom">
-            <p>&copy; 2025 Universal AI Dev Framework. MIT License.</p>
+            <p>Repository created by <a href="https://github.com/galando">Gal Naor</a> • PIV Methodology created by <a href="https://github.com/coleam00">Cole Medin</a> • Made with ❤️ for the AI-assisted development community</p>
         </div>
     </footer>
 
@@ -1692,93 +1262,83 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
 
     <script>
-        // Copy button functionality
-        const copyButtons = document.querySelectorAll('.copy-button');
+        // Theme Toggle
+        const themeToggle = document.querySelector('.theme-toggle');
+        const html = document.documentElement;
+        const sunIcon = document.querySelector('.sun-icon');
+        const moonIcon = document.querySelector('.moon-icon');
 
-        copyButtons.forEach(button => {
-            button.addEventListener('click', async () => {
-                const targetId = button.getAttribute('data-copy-target');
-                const targetElement = document.querySelector(`[id="${targetId}"]`) ||
-                                    button.parentElement.querySelector('code');
+        const getInitialTheme = () => {
+            const saved = localStorage.getItem('theme');
+            if (saved) return saved;
+            return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        };
 
-                if (!targetElement) {
-                    console.error('Copy target not found');
-                    return;
-                }
+        const setTheme = (theme) => {
+            html.setAttribute('data-theme', theme);
+            localStorage.setItem('theme', theme);
+            sunIcon.style.display = theme === 'dark' ? 'none' : 'block';
+            moonIcon.style.display = theme === 'dark' ? 'block' : 'none';
+        };
 
-                const textToCopy = targetElement.textContent || targetElement.innerText;
+        setTheme(getInitialTheme());
+
+        themeToggle.addEventListener('click', () => {
+            const current = html.getAttribute('data-theme');
+            setTheme(current === 'dark' ? 'light' : 'dark');
+        });
+
+        // Tab Switching
+        const tabs = document.querySelectorAll('.install-tab');
+        const contents = document.querySelectorAll('.install-content');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetId = tab.getAttribute('data-tab');
+
+                tabs.forEach(t => t.classList.remove('active'));
+                contents.forEach(c => c.classList.remove('active'));
+
+                tab.classList.add('active');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+
+        // Copy Buttons
+        const copyButtons = document.querySelectorAll('.copy-btn');
+
+        copyButtons.forEach(btn => {
+            btn.addEventListener('click', async () => {
+                const code = btn.parentElement.querySelector('code').textContent;
 
                 try {
-                    // Use modern Clipboard API
-                    await navigator.clipboard.writeText(textToCopy);
+                    await navigator.clipboard.writeText(code);
+                    btn.classList.add('copied');
+                    const span = btn.querySelector('span');
+                    if (span) span.textContent = 'Copied!';
 
-                    // Visual feedback
-                    button.classList.add('copied');
-                    const copyIcon = button.querySelector('.copy-icon');
-                    const copiedIcon = button.querySelector('.copy-icon-copied');
-                    const copyText = button.querySelector('.copy-text');
-
-                    if (copyIcon) copyIcon.style.display = 'none';
-                    if (copiedIcon) copiedIcon.style.display = 'inline';
-                    if (copyText) copyText.textContent = 'Copied!';
-
-                    // Reset after 2 seconds
                     setTimeout(() => {
-                        button.classList.remove('copied');
-                        if (copyIcon) copyIcon.style.display = 'inline';
-                        if (copiedIcon) copiedIcon.style.display = 'none';
-                        if (copyText) copyText.textContent = 'Copy';
+                        btn.classList.remove('copied');
+                        if (span) span.textContent = 'Copy';
                     }, 2000);
-
                 } catch (err) {
-                    // Fallback for older browsers
                     console.error('Copy failed:', err);
-
-                    // Try legacy approach
-                    const textArea = document.createElement('textarea');
-                    textArea.value = textToCopy;
-                    textArea.style.position = 'fixed';
-                    textArea.style.left = '-999999px';
-                    document.body.appendChild(textArea);
-                    textArea.select();
-
-                    try {
-                        document.execCommand('copy');
-                        button.classList.add('copied');
-                        const copyText = button.querySelector('.copy-text');
-                        if (copyText) copyText.textContent = 'Copied!';
-                        setTimeout(() => {
-                            button.classList.remove('copied');
-                            if (copyText) copyText.textContent = 'Copy';
-                        }, 2000);
-                    } catch (fallbackErr) {
-                        console.error('Fallback copy also failed:', fallbackErr);
-                        alert('Copy failed. Please select and copy the command manually.');
-                    }
-
-                    document.body.removeChild(textArea);
                 }
             });
         });
 
-        // Scroll reveal animation
-        const revealElements = document.querySelectorAll('.reveal');
-
-        const revealOnScroll = () => {
-            revealElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('active');
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
                 }
             });
-        };
+        });
 
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Initial check
-
-        // Mobile menu toggle
+        // Mobile Menu
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.querySelector('.nav');
 
@@ -1791,87 +1351,12 @@
                 nav.style.left = '0';
                 nav.style.right = '0';
                 nav.style.flexDirection = 'column';
-                nav.style.background = 'white';
-                nav.style.padding = 'var(--space-md)';
-                nav.style.borderTop = '1px solid var(--color-border)';
+                nav.style.background = 'var(--bg-card)';
+                nav.style.padding = 'var(--space-lg)';
+                nav.style.borderBottom = '1px solid var(--border-color)';
             } else {
                 nav.style.display = '';
                 nav.style.position = '';
-                nav.style.flexDirection = '';
-            }
-        });
-
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const html = document.documentElement;
-
-        // Function to update icons based on theme
-        const updateThemeIcons = (theme) => {
-            const sunIcon = themeToggle.querySelector('.theme-icon-sun');
-            const moonIcon = themeToggle.querySelector('.theme-icon-moon');
-
-            if (theme === 'dark') {
-                sunIcon.style.display = 'none';
-                moonIcon.style.display = 'inline';
-            } else {
-                sunIcon.style.display = 'inline';
-                moonIcon.style.display = 'none';
-            }
-        };
-
-        // Get initial theme
-        const getInitialTheme = () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme) {
-                return savedTheme;
-            }
-
-            // Check system preference
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                return 'dark';
-            }
-
-            return 'light';
-        };
-
-        // Set initial theme
-        const initialTheme = getInitialTheme();
-        if (initialTheme === 'dark') {
-            html.setAttribute('data-theme', 'dark');
-        }
-        updateThemeIcons(initialTheme);
-
-        // Toggle theme on click
-        themeToggle.addEventListener('click', () => {
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            updateThemeIcons(newTheme);
-        });
-
-        // Listen for system theme changes
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
-            // Only change if user hasn't set a preference
-            if (!localStorage.getItem('theme')) {
-                const newTheme = e.matches ? 'dark' : 'light';
-                html.setAttribute('data-theme', newTheme);
-                updateThemeIcons(newTheme);
             }
         });
     </script>
