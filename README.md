@@ -32,13 +32,13 @@ A development methodology for AI-assisted software development:
 
 ```bash
 # Add marketplace
-/plugin marketplace add galando/universal-ai-dev-framework/marketplace
+/plugin marketplace add galando/universal-ai-dev-framework
 
 # Install PIV
-/plugin install piv@universal-ai-dev-framework
+/plugin install piv
 ```
 
-**Commands:** `/piv:prime`, `/piv:plan-feature`, `/piv:execute`, `/piv:validate`
+**Commands:** `/piv_loop:prime`, `/piv_loop:plan-feature`, `/piv_loop:execute`, `/validation:validate`
 
 **Features:** Auto-activating skills (TDD, code-review, security), full reference docs, agent context system.
 
