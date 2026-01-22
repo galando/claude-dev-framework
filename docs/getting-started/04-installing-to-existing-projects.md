@@ -26,7 +26,7 @@ This guide walks you through installing the PIV (Prime-Implement-Validate) metho
 
 ```bash
 # From your project directory
-curl -s https://raw.githubusercontent.com/galando/universal-ai-dev-framework/main/scripts/piv.sh | bash
+curl -s https://raw.githubusercontent.com/galando/piv-speckit/main/scripts/piv.sh | bash
 ```
 
 That's it! The installer:
@@ -40,7 +40,7 @@ That's it! The installer:
 Run the same command to update:
 
 ```bash
-curl -s https://raw.githubusercontent.com/galando/universal-ai-dev-framework/main/scripts/piv.sh | bash
+curl -s https://raw.githubusercontent.com/galando/piv-speckit/main/scripts/piv.sh | bash
 ```
 
 ---
@@ -523,7 +523,7 @@ If you want to remove PIV from your project:
 /tmp/piv/scripts/uninstall-piv.sh
 
 # Or download uninstall script
-curl -sSL https://raw.githubusercontent.com/galando/universal-ai-dev-framework/main/scripts/uninstall-piv.sh | bash
+curl -sSL https://raw.githubusercontent.com/galando/piv-speckit/main/scripts/uninstall-piv.sh | bash
 ```
 
 The uninstaller will:

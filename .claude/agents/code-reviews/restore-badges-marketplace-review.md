@@ -55,7 +55,7 @@ The changes are straightforward markdown badge additions and a file copy operati
 ### 2. Security Issues
 ✅ **No issues** - External badge URLs are standard services (Shields.io, DeepWiki)
 - Buy Me A Coffee link: `https://buymeacoffee.com/galando` (legitimate service)
-- DeepWiki link: `https://deepwiki.com/galando/universal-ai-dev-framework` (community knowledge base)
+- DeepWiki link: `https://deepwiki.com/galando/piv-speckit` (community knowledge base)
 
 ### 3. Performance Problems
 ✅ **No issues** - Badge images are loaded from external CDNs

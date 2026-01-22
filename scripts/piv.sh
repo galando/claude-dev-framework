@@ -110,7 +110,7 @@ EXAMPLES:
     bash piv.sh --dry-run
 
 For Claude Code full experience:
-    /plugin marketplace add galando/universal-ai-dev-framework/marketplace
+    /plugin marketplace add galando/piv-speckit/marketplace
     /plugin install piv@universal-ai-dev-framework
 
 For more information: $REPO_URL
@@ -172,7 +172,7 @@ print_banner() {
 ║      Works with: Cursor • GitHub Copilot • OpenAI Codex • More        ║
 ║                                                                        ║
 ║      For Claude Code full experience:                                  ║
-║      /plugin marketplace add galando/universal-ai-dev-framework/marketplace
+║      /plugin marketplace add galando/piv-speckit/marketplace
 ║      /plugin install piv@universal-ai-dev-framework                    ║
 ║                                                                        ║
 ╚═══════════════════════════════════════════════════════════════════════╝

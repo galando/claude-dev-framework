@@ -1,4 +1,4 @@
-# Universal AI Dev Framework
+# PIV Spec-Kit
 
 **PIV (Prime-Implement-Validate) methodology for AI-assisted development**
 

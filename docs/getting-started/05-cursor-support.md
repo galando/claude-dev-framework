@@ -7,7 +7,7 @@ The Universal AI Dev Framework works with Cursor through `AGENTS.md` - a compact
 ## Installation
 
 ```bash
-curl -s https://raw.githubusercontent.com/galando/universal-ai-dev-framework/main/scripts/piv.sh | bash
+curl -s https://raw.githubusercontent.com/galando/piv-speckit/main/scripts/piv.sh | bash
 ```
 
 This generates `AGENTS.md` in your project root.
@@ -79,7 +79,7 @@ See: [AGENTS.md specification](https://agents.md/)
 Use Claude Code with the plugin for full features:
 
 ```bash
-/plugin marketplace add galando/universal-ai-dev-framework/marketplace
+/plugin marketplace add galando/piv-speckit/marketplace
 /plugin install piv@universal-ai-dev-framework
 ```
 

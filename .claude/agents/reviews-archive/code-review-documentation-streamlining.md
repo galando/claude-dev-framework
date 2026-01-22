@@ -43,7 +43,7 @@ This is a **pure documentation refactor** with no code changes. The implementati
 - **Created navigation hub** - `docs/README.md` provides clear documentation structure
 - **Extracted detailed content** - Adaptive Learning now has comprehensive standalone documentation
 - **Fixed broken link** - GitHub Pages methodology link now points to correct path
-- **Updated repo name** - CHANGELOG.md references updated from old `claude-piv-skeleton` to `claude-dev-framework`
+- **Updated repo name** - CHANGELOG.md references updated from old `piv-speckit` to `claude-dev-framework`
 
 All changes align with the implementation plan and follow documentation best practices from Utrecht University and Tilburg Science Hub.
 

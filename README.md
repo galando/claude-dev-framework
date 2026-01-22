@@ -22,7 +22,7 @@ A development methodology for AI-assisted software development:
 - **Implement**: Write tests FIRST (strict TDD), then minimal code
 - **Validate**: Automatic testing and verification
 
-[→ Interactive Visual Guide](https://galando.github.io/universal-ai-dev-framework/) | [→ Full Methodology](.claude/reference/methodology/PIV-METHODOLOGY.md)
+[→ Interactive Visual Guide](https://galando.github.io/piv-speckit/) | [→ Full Methodology](.claude/reference/methodology/PIV-METHODOLOGY.md)
 
 ---
 
@@ -58,7 +58,7 @@ No Claude Code dependency for planning or implementation!
 
 ```bash
 # Add marketplace
-/plugin marketplace add galando/universal-ai-dev-framework
+/plugin marketplace add galando/piv-speckit
 
 # Install PIV + Spec-Kit
 /plugin install piv-speckit
@@ -71,7 +71,7 @@ No Claude Code dependency for planning or implementation!
 ### Cursor / GitHub Copilot / Other AI Tools
 
 ```bash
-curl -s https://raw.githubusercontent.com/galando/universal-ai-dev-framework/main/scripts/piv.sh | bash
+curl -s https://raw.githubusercontent.com/galando/piv-speckit/main/scripts/piv.sh | bash
 ```
 
 **Generates:** `AGENTS.md` - universal AI agent instructions that Cursor and other tools read automatically.

@@ -28,7 +28,7 @@ Before you begin, ensure you have:
 
 ```bash
 # From your project directory
-curl -s https://raw.githubusercontent.com/galando/universal-ai-dev-framework/main/scripts/piv.sh | bash
+curl -s https://raw.githubusercontent.com/galando/piv-speckit/main/scripts/piv.sh | bash
 ```
 
 That's it! The installer will:
@@ -42,7 +42,7 @@ That's it! The installer will:
 Run the same command to update:
 
 ```bash
-curl -s https://raw.githubusercontent.com/galando/universal-ai-dev-framework/main/scripts/piv.sh | bash
+curl -s https://raw.githubusercontent.com/galando/piv-speckit/main/scripts/piv.sh | bash
 ```
 
 The script auto-detects if you need installation or update.
