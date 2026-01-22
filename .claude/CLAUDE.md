@@ -1,6 +1,6 @@
 # Universal AI Dev Framework
 
-**Universal PIV (Prime-Implement-Validate) methodology for AI-assisted development**
+**PIV (Prime-Implement-Validate) methodology for AI-assisted development**
 
 ---
 

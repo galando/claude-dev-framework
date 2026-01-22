@@ -1,4 +1,4 @@
-# Universal AI Dev Framework
+# PIV Spec-Kit
 
 [![PIV Spec-Kit](https://img.shields.io/badge/PIV_Spec--Kit-Framework-blue?style=for-the-badge)](https://github.com/galando/piv-speckit)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
@@ -6,7 +6,7 @@
 [![Inspired by Spec-Kit](https://img.shields.io/badge/Inspired_By-Spec--Kit-blue?style=for-the-badge)](https://github.com/github/spec-kit)
 [![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/galando/piv-speckit)
 
-**Universal PIV (Prime-Implement-Validate) methodology for AI-assisted development.**
+**PIV (Prime-Implement-Validate) + Spec-Kit: Structured specs, strict TDD, for AI-assisted development.**
 
 Works with **Claude Code**, **Cursor**, **GitHub Copilot**, **OpenAI Codex**, and 20+ AI coding tools.
 
