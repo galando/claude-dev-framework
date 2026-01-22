@@ -91,12 +91,91 @@ curl -s https://raw.githubusercontent.com/galando/piv-speckit/main/scripts/piv.s
 
 ---
 
-## Architecture
+## Architecture & Workflow
+
+### Complete Development Flow
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                           PIV SPEC-KIT WORKFLOW                             │
+├─────────────────────────────────────────────────────────────────────────────┤
+│                                                                             │
+│  1. CONSTITUTION (One-time)                                                 │
+│     ┌─────────────────────────────────────────────────────────────────┐    │
+│     │ /piv_loop:constitution                                          │    │
+│     │ → Creates .claude/memory/constitution.md                        │    │
+│     │ → Defines: purpose, principles, stack, constraints              │    │
+│     └─────────────────────────────────────────────────────────────────┘    │
+│                                    ↓                                        │
+│  2. PRIME (Context Loading)                                               │
+│     ┌─────────────────────────────────────────────────────────────────┐    │
+│     │ /piv_loop:prime                                                  │    │
+│     │ → Analyzes codebase structure                                   │    │
+│     │ → Identifies patterns, conventions, tech stack                  │    │
+│     │ → Loads only relevant context (smart layering)                 │    │
+│     └─────────────────────────────────────────────────────────────────┘    │
+│                                    ↓                                        │
+│  3. PLAN (Structured Specs)                                               │
+│     ┌─────────────────────────────────────────────────────────────────┐    │
+│     │ /piv_loop:plan-feature "Add user authentication"                │    │
+│     │ → Creates .claude/specs/{feature}/                              │    │
+│     │   ├─ spec.md        (WHAT: requirements, user stories)          │    │
+│     │   ├─ plan.md        (HOW: architecture, data model, APIs)       │    │
+│     │   ├─ tasks.md       (DO: step-by-step implementation)          │    │
+│     │   └─ quickstart.md  (TL;DR: quick reference)                   │    │
+│     └─────────────────────────────────────────────────────────────────┘    │
+│                                    ↓                                        │
+│  4. IMPLEMENT (Strict TDD)                                               │
+│     ┌─────────────────────────────────────────────────────────────────┐    │
+│     │ /piv_loop:execute .claude/specs/{feature}/tasks.md              │    │
+│     │                                                                  │    │
+│     │   For each task:                                                 │    │
+│     │   ├─ RED:   Write failing test first                            │    │
+│     │   ├─ GREEN: Write minimal code to pass                          │    │
+│     │   └─ REFACTOR: Improve while tests stay green                   │    │
+│     │                                                                  │    │
+│     │   Skills auto-activate: TDD, code-review, security              │    │
+│     └─────────────────────────────────────────────────────────────────┘    │
+│                                    ↓                                        │
+│  5. VALIDATE (Automatic)                                                 │
+│     ┌─────────────────────────────────────────────────────────────────┐    │
+│     │ Auto-runs after execute                                          │    │
+│     │ → Tests: all passing?                                           │    │
+│     │ → Coverage: ≥80%?                                               │    │
+│     │ → Security: no vulnerabilities?                                  │    │
+│     │ → TDD compliance: tests written first?                          │    │
+│     └─────────────────────────────────────────────────────────────────┘    │
+│                                    ↓                                        │
+│  6. COMMIT                                                                  │
+│     ┌─────────────────────────────────────────────────────────────────┐    │
+│     │ /commit                                                          │    │
+│     │ → Conventional commit message                                    │    │
+│     │ → Atomic, focused changes                                       │    │
+│     └─────────────────────────────────────────────────────────────────┘    │
+│                                                                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+```
+
+### Component Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
 │                     SOURCE OF TRUTH                              │
 │                     /.claude/ directory                         │
+│                                                                    │
+│  .claude/                                                          │
+│  ├── commands/           # Slash command definitions            │
+│  │   ├── piv_loop/       # Prime, Plan, Execute, Constitution   │
+│  │   ├── validation/     # Validate, code-review, learn         │
+│  │   └── bug_fix/        # RCA, fix                               │
+│  ├── skills/            # Auto-activating quality enforcers      │
+│  │   ├── test-driven-development    # TDD enforcement            │
+│  │   ├── code-review                # Quality checks              │
+│  │   ├── api-design                 # REST API patterns           │
+│  │   └── security                   # Security guidelines         │
+│  ├── specs/.templates/  # Spec artifact templates               │
+│  ├── memory/           # Stored context (constitution)          │
+│  └── reference/         # Complete methodology docs           │
 └───────────────────────────────┬─────────────────────────────────┘
                                 │
         ┌───────────────────────┼───────────────────────────────┐
@@ -105,12 +184,21 @@ curl -s https://raw.githubusercontent.com/galando/piv-speckit/main/scripts/piv.s
 │  CLAUDE CODE  │      │    CURSOR     │              │ OTHER TOOLS   │
 │   (Plugin)    │      │   (Script)    │              │   (Script)    │
 │               │      │               │              │               │
-│ /piv:prime    │      │  AGENTS.md    │              │  AGENTS.md    │
-│ /piv:plan     │      │  (< 500 lines)│              │               │
-│ /piv:execute  │      │               │              │               │
-│ + Skills      │      │               │              │               │
+│ Full commands │      │  AGENTS.md    │              │  AGENTS.md    │
+│ Auto-skills   │      │  (< 500 lines)│              │               │
+│ Smart context │      │               │              │               │
 └───────────────┘      └───────────────┘              └───────────────┘
 ```
+
+### Key Principles
+
+| Principle | Description |
+|-----------|-------------|
+| **Context Layering** | Load only relevant context (~15KB), not entire codebase |
+| **Spec Artifacts** | Split WHAT (spec), HOW (plan), DO (tasks) for clarity |
+| **Strict TDD** | RED → GREEN → REFACTOR - never write code before tests |
+| **Auto-Validation** | Quality checks run automatically after implementation |
+| **Multi-AI Compatible** | All artifacts are Markdown - works with any AI tool |
 
 ---
 
