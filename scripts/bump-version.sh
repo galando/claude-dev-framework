@@ -98,17 +98,33 @@ bump_version() {
 
     echo "Bumping version: $current_version → $new_version"
 
-    # Update VERSION file (ONLY place with version number)
+    # Update VERSION file (single source of truth)
     echo "$new_version" > "$VERSION_FILE"
+
+    # Update .claude-plugin/plugin.json
+    local plugin_json="$SCRIPT_DIR/../.claude-plugin/plugin.json"
+    if [ -f "$plugin_json" ]; then
+        # Use sed for cross-platform compatibility (macOS & Linux)
+        if [[ "$OSTYPE" == "darwin"* ]]; then
+            # macOS
+            sed -i '' "s/\"version\": \".*\"/\"version\": \"$new_version\"/" "$plugin_json"
+        else
+            # Linux
+            sed -i "s/\"version\": \".*\"/\"version\": \"$new_version\"/" "$plugin_json"
+        fi
+        echo "Updated: .claude-plugin/plugin.json = $new_version"
+    fi
 
     echo ""
     echo "════════════════════════════════════════════════════════════════════"
     echo "✅ Version bump complete!"
     echo "════════════════════════════════════════════════════════════════════"
     echo ""
-    echo "Updated: VERSION = $new_version"
+    echo "Updated files:"
+    echo "  - VERSION = $new_version"
+    echo "  - .claude-plugin/plugin.json = $new_version"
     echo ""
-    echo "All other files read VERSION dynamically:"
+    echo "Files that read VERSION dynamically:"
     echo "  - scripts/piv.sh: reads VERSION at runtime"
     echo "  - .cursor/rules/*: read VERSION at generation time"
     echo "  - AGENTS.md: reads VERSION at generation time"

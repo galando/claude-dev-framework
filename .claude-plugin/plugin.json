@@ -1,7 +1,7 @@
 {
   "name": "piv-speckit",
   "description": "PIV + Spec-Kit: PIV methodology with structured specs and strict TDD",
-  "version": "__VERSION__",
+  "version": "3.0.0",
   "author": {
     "name": "galando",
     "url": "https://github.com/galando/piv-speckit"
@@ -13,7 +13,6 @@
   "commands": [
     "./.claude/commands/bug_fix/rca.md",
     "./.claude/commands/bug_fix/implement-fix.md",
-    "./.claude/commands/git/commit.md",
     "./.claude/commands/piv_loop/prime.md",
     "./.claude/commands/piv_loop/plan-feature.md",
     "./.claude/commands/piv_loop/execute.md",
